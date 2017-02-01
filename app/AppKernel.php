@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new covoiturage\userBundle\covoiturageuserBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new covoiturage\adminBundle\covoiturageadminBundle(),
+            new covoiturage\membreBundle\covoituragemembreBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

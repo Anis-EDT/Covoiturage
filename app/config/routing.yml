@@ -1,3 +1,7 @@
+covoituragemembre:
+    resource: "@covoituragemembreBundle/Resources/config/routing.yml"
+    prefix:   /
+
 covoiturageadmin:
     resource: "@covoiturageadminBundle/Resources/config/routing.yml"
     prefix:   /

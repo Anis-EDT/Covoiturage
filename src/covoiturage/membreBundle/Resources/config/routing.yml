@@ -1,0 +1,3 @@
+covoituragemembre_homepage:
+    path:     /
+    defaults: { _controller: covoituragemembreBundle:Default:index }
