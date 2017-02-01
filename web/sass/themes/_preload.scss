@@ -1,0 +1,159 @@
+.preload{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 99999999;
+  opacity: 1;
+  visibility: visible;
+  @include transition(opacity 1s ease);
+  @include transition-delay(1s);
+  &:before,
+  &:after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 25%;
+    background-color: #111;
+    visibility: visible;
+    opacity: 1;
+    z-index: 99;
+    @include transition(all .4s linear);
+  }
+  &:before{
+    top: 0;
+    left: 0;
+    @include translateX(0);
+    // @include transition-delay(.2s);
+  }
+  &:after{
+    bottom: 0;
+    right: 0;
+    @include translateX(0);
+    @include transition-delay(.6s);
+  }
+}
+
+.flat{
+  position: fixed;
+  width: 100%;
+  height: calc(50% + 2px);
+  top: 50%;
+  left: 0;
+  z-index: 9000;
+  opacity: 1;
+  visibility: visible;
+  @include translateY(-50%);
+  @include transition(opacity 1s ease);
+  @include transition-delay(1s);
+  &:before,
+  &:after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 51%;
+    background-color: #111;
+    visibility: visible;
+    opacity: 1;
+    z-index: 99;
+    @include transition(all .4s linear);
+  }
+  &:before{
+    top: 0;
+    left: 0;
+    @include translateX(0);
+    @include transition-delay(.2s);
+  }
+  &:after{
+    bottom: 0;
+    right: 0;
+    @include translateX(0);
+    @include transition-delay(.4s);
+  }
+}
+
+.completed{
+  opacity: 0;
+  visibility: hidden;
+  &:before{
+    @include translateX(-100%);
+  }
+  &:after{
+    @include translateX(100%);
+  }
+  .flat{
+    opacity: 0;
+    visibility: hidden;
+    &:before{
+      @include translateX(100%);
+    }
+    &:after{
+      @include translateX(-100%);
+    }
+  }
+  .square,
+  .square-2,
+  .square-3,
+  .square-4{
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+// PRELOAD STYLE
+.square,
+.square-2,
+.square-3,
+.square-4{
+  position: absolute;
+  top: 50%;
+  left: 0; right: 0;
+  margin: auto;
+  z-index: 9001;
+  border: 6px solid $color;
+  overflow: hidden;
+  opacity: 1;
+  visibility: visible;
+  @include translateY(-50%);
+  @include transition(all 2s ease);
+  // @include transition-delay(1s);
+}
+
+.square{
+  @include animation(zoom 1.5s infinite linear);
+}
+.square-2{
+  @include animation(zoom1 1.5s infinite linear);
+}
+.square-3{
+  @include animation(zoom2 1.5s infinite linear);
+}
+.square-4{
+  @include animation(zoom3 1.5s infinite linear);
+}
+
+@include keyframes(zoom){
+  0% { width: 20px; height: 20px; opacity: 0; }
+  33% { width: 40px; height: 40px; opacity: 1; }
+  66% { width: 60px; height: 60px; opacity: 0; }
+  100% { width: 20px; height: 20px; opacity: 0; }
+}
+@include keyframes(zoom1){
+  0% { width: 20px; height: 20px; opacity: 0; }
+  33% { width: 20px; height: 20px; opacity: 0; }
+  66% { width: 40px; height: 40px; opacity: 1; }
+  100% { width: 60px; height: 60px; opacity: 0; }
+}
+@include keyframes(zoom2){
+  0% { width: 60px; height: 60px; opacity: 0; }
+  33% { width: 20px; height: 20px; opacity: 0; }
+  66% { width: 20px; height: 20px; opacity: 0; }
+  100% { width: 40px; height: 40px; opacity: 1; }
+}
+@include keyframes(zoom3){
+  0% { width: 40px; height: 40px; opacity: 1; }
+  33% { width: 60px; height: 60px; opacity: 0; }
+  66% { width: 20px; height: 20px; opacity: 0; }
+  100% { width: 20px; height: 20px; opacity: 0; }
+}

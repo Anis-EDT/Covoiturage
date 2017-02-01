@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<!--[if IE 7 ]> <html class="ie ie7"> <![endif]-->
+<!--[if IE 8 ]> <html class="ie ie8"> <![endif]-->
+<!--[if IE 9 ]> <html class="ie ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="" lang="en"> <!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    {% block stylesheets %}
+        <!-- GOOGLE FONT -->
+        <link href="{{asset('https://fonts.googleapis.com/css?family=Montserrat:400,700') }}" rel='stylesheet' type='text/css'>
+        <link href="{{asset('https://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic') }}" rel='stylesheet' type='text/css'>
+        <link href="{{asset('https://fonts.googleapis.com/css?family=Raleway:100,300,400,500,600,700') }}" rel='stylesheet' type='text/css'>
+        <!-- CSS LIBRARY -->
+        <!-- Bootstrap -->
+        <link type="text/css" href="{{asset('css/lib/bootstrap.min.css') }}" rel="stylesheet">
+        <link type="text/css" href="{{asset('css/lib/jquery.bootstrap-touchspin.min.css') }}" rel="stylesheet">
+
+        <!-- Font Icon -->
+        <link type="text/css" href="{{asset('css/lib/font-awesome.min.css') }}" rel="stylesheet">
+        <link type="text/css" href="{{asset('css/lib/cortana.css') }}" rel="stylesheet">
+
+        <!-- Revolution Slider -->
+        <link type="text/css" href="{{asset('rs-plugin/css/settings.css') }}" rel="stylesheet">
+        <!-- Owl Carousel -->
+        <link type="text/css" href="{{asset('css/lib/owl.carousel.css') }}" rel="stylesheet">
+
+        <!-- Select into div -->
+        <link type="text/css" href="{{asset('css/lib/select2.min.css') }}" rel="stylesheet">
+
+        <!-- Magnific Popup -->
+        <link type="text/css" href="{{asset('css/lib/magnific-popup.css') }}" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link type="text/css" href="{{asset('css/style.css') }}" rel="stylesheet">
+        <link type="text/css" href="{{asset('font-awesome-4.7.0/css/font-awesome.min.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css') }}">
+        <script src="{{ asset('https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js') }}"></script>
+        <script src="{{ asset('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js') }}"></script>
+
+    {% endblock %}
+    {% block javascripts %}
+
+
+        <script src="{{asset('https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js') }}"></script>
+        <script src="{{asset('https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js') }}"></script>
+
+        <script src="{{asset('js/lib/bootstrap.min.js') }}"></script>
+
+        <![endif]-->
+    {% endblock %}
+    <title>Accueil</title>
+</head>
+<body>
+
+<!-- PRELOAD -->
+<div id="preload" class="preload">
+    <div class="flat"></div>
+    <div class="square"></div>
+    <div class="square-2"></div>
+    <div class="square-3"></div>
+    <div class="square-4"></div>
+</div>
+
+<!-- HEADER 1 -->
+<header id="header" class="header head1">
+
+    <div class="main-header main-header-1 bd-b-alpha">
+        <div class="container">
+            <!-- LOGO -->
+            <div class="logo">
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                <a href="{{ path('covoiturage_homepage') }}" ><img src="{{asset('img/logo2.png')}}" style="padding-top: 14%"/></a>
+                {% else %}
+                <a href="{{ path('covoiturage_homepage') }}" ><img src="{{asset('img/logo2.png')}}" /></a>
+                {% endif %}
+            </div><!-- /#logo -->
+            <!-- END / LOGO -->
+
+            <!-- MOBILE MENU -->
+            <div class="mobile-nav-menu" data-menu-number="3">
+                <span class="icon">&nbsp;</span>
+            </div><!-- /mobile-nav-menu -->
+            <!-- /END MOBILE MENU -->
+
+
+
+            <!-- NAVIGATION -->
+            <nav class="navigation nav3" data-menu-type="1199">
+                <ul class="nav text-uppercase">
+
+
+
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <li><a href="{{ path('covoiturage_contact') }}">Contactez nous</a></li>
+                        <li class="no-bg" ><a href="" class="p-job"><i class="fa fa-plus-square" style="margin-top: -50%"></i>Ajouter Annonce</a></li>
+
+                        <li class="menu-item-has-children" >
+                            <a href="#" >
+                                <img src="{{ asset('/' ~ app.user.photoMembre ~ '') }}"  class="img-circle" width="40" height="40" border="1"  /></a>
+                                <ul class="sub-menu" style="left: -140%">
+
+                                <li><a href="#"><i class="fa fa-user"></i> {{ app.user.username|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</a></li>
+                                <li><a href="#"><i class="fa fa-cab"></i> Mes annonces</a></li>
+                                <li><a href="#"><i class="fa fa-book"></i> Mes réservation</a></li>
+                                <li><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-power-off"></i> Logout</a></li>
+                            </ul>
+                        </li>
+                    {% else %}
+
+                        <li>
+                            <a href="{{ path('fos_user_registration_register') }}">
+                                Inscription</a>
+                        </li>
+                        <li><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
+                        <li><a href="{{ path('covoiturage_contact') }}">Contactez nous</a></li>
+                    {% endif %}
+
+                </ul><!-- /nav -->
+            </nav>
+            <!-- END / NAVIGATION -->
+        </div><!-- /container -->
+    </div><!-- /main-header -->
+</header><!-- /header -->
+<!-- END / HEADER 1 -->
+
+<div id="page-wrap">
+    <!-- HOME MEDIA -->
+    <section id="home-media" class="section pt-0 pb-0" data-home-media="500">
+        <div class="tp-banner-container">
+            <div class="tp-banner" >
+                <ul>
+                    <!-- SLIDE 1  -->
+                    <li data-transition="random" data-slotamount="7" data-masterspeed="500" data-thumb="{{ asset('img/slider/slide10.jpg')}}"  data-saveperformance="on" data-title="Slider 1">
+                        <!-- MAIN IMAGE -->
+                        <img src="{{ asset('img/slider/slide10.jpg')}}"  alt="{{ asset('img/slider/slide10.jpg')}}" data-lazyload="{{ asset('img/slider/slide10.jpg')}}" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+                        <!-- LAYERS -->
+
+                        <!-- LAYER NR. 1 -->
+                        <div class="tp-caption grey_heavy_72 lfl tp-resizeme rs-parallaxlevel-0 tp-headline"
+                             data-x="center"
+                             data-y="200"
+                             data-speed="500"
+                             data-start="1350"
+                             data-easing="Power3.easeInOut"
+                             data-splitin="lines"
+                             data-splitout="none"
+                             data-elementdelay="0.1"
+                             data-endelementdelay="0.1"
+                             style="z-index: 99; max-width: auto; max-height: auto; white-space: nowrap;font-size: 30px;padding-top: 50px">Il y a autant de voyages que de feuilles sur l'arbre du voyageur
+                        </div>
+
+                        <!-- LAYER NR. 2 -->
+                        <div class="tp-caption grey_heavy_72 lfr tp-resizeme rs-parallaxlevel-0 tp-headline-3"
+                             data-x="center"
+                             data-y="250"
+                             data-speed="500"
+                             data-start="1650"
+                             data-easing="Power3.easeInOut"
+                             data-splitin="lines"
+                             data-splitout="none"
+                             data-elementdelay="0.1"
+                             data-endelementdelay="0.1"
+                             style="z-index: 99; max-width: auto; max-height: auto; white-space: nowrap;padding-top: 50px">voyagent ensemble
+                        </div>
+
+
+                        <!-- SLIDE 2 -->
+                    <li data-transition="random" data-slotamount="7" data-masterspeed="500" data-thumb="{{ asset('img/slider/slide20.jpg')}}"  data-saveperformance="on"  data-title="Slider 2">
+                        <!-- MAIN IMAGE -->
+                        <img src="{{ asset('img/slider/slide20.jpg')}}"  alt="{{ asset('img/slider/slide20.jpg')}}" data-lazyload="{{ asset('img/slider/slide20.jpg')}}" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+                        <!-- LAYERS -->
+
+                        <!-- LAYER NR. 1 -->
+                        <div class="tp-caption grey_heavy_72 sfb tp-resizeme rs-parallaxlevel-0 tp-headline"
+                             data-x="left"
+                             data-y="180"
+                             data-hoffset="15"
+                             data-speed="500"
+                             data-start="1050"
+                             data-easing="Power3.easeInOut"
+                             data-splitin="lines"
+                             data-splitout="none"
+                             data-elementdelay="0.1"
+                             data-endelementdelay="0.1"
+                             style="z-index: 99; max-width: auto; max-height: auto; white-space: nowrap;">on s'occupe de tout
+                        </div>
+
+                        <!-- LAYER NR. 2 -->
+                        <div class="tp-caption grey_heavy_72 sfb tp-resizeme rs-parallaxlevel-0 tp-description"
+                             data-x="left"
+                             data-y="230"
+                             data-hoffset="15"
+                             data-speed="500"
+                             data-start="1350"
+                             data-easing="Power3.easeInOut"
+                             data-splitin="lines"
+                             data-splitout="none"
+                             data-elementdelay="0.1"
+                             data-endelementdelay="0.1"
+                             style="z-index: 99; max-width: auto; max-height: auto; white-space: nowrap;">On ne fait pas un voyage. Le voyage nous fait et nous défait,
+                        </div>
+
+                        <!-- LAYER NR. 3 -->
+                        <div class="tp-caption grey_heavy_72 sfb tp-resizeme rs-parallaxlevel-0 tp-description"
+                             data-x="left"
+                             data-y="280"
+                             data-hoffset="15"
+                             data-speed="500"
+                             data-start="1350"
+                             data-easing="Power3.easeInOut"
+                             data-splitin="lines"
+                             data-splitout="none"
+                             data-elementdelay="0.1"
+                             data-endelementdelay="0.1"
+                             style="z-index: 99; max-width: auto; max-height: auto; white-space: nowrap;">il nous invente.
+                        </div>
+
+                        <!-- LAYER NR. 4 -->
+                        <div class="tp-caption grey_heavy_72 sfl tp-resizeme rs-parallaxlevel-0"
+                             data-x="left"
+                             data-y="330"
+                             data-hoffset="15"
+                             data-speed="500"
+                             data-start="2050"
+                             data-easing="Power3.easeInOut"
+                             data-splitin="none"
+                             data-splitout="none"
+                             data-elementdelay="0.1"
+                             data-endelementdelay="0.1"
+                             style="z-index: 99; max-width: auto; max-height: auto; white-space: nowrap;"><a href="{{ path('covoiturage_contact') }}" class='btn btn-primary mr-10'>Contaztez nous</a>
+                        </div>
+                    </li>
+
+                    <!-- SLIDE 3 -->
+                    <li data-transition="random" data-slotamount="7" data-masterspeed="500" data-thumb="{{ asset('img/slider/slide30.jpg')}}"  data-saveperformance="on"  data-title="Slider 3">
+                        <!-- MAIN IMAGE -->
+                        <img src="{{ asset('img/slider/slide30.jpg')}}"  alt="slidebg1" data-lazyload="{{ asset('img/slider/slide30.jpg')}}" data-bgposition="center top" data-bgfit="cover" data-bgrepeat="no-repeat">
+                        <!-- LAYERS -->
+
+                        <!-- LAYER NR. 1 -->
+                        <div class="tp-caption grey_heavy_72 sfb tp-resizeme rs-parallaxlevel-0 tp-headline-3"
+                             data-x="center"
+                             data-y="200"
+                             data-speed="500"
+                             data-start="1050"
+                             data-easing="Power3.easeInOut"
+                             data-splitin="lines"
+                             data-splitout="none"
+                             data-elementdelay="0.1"
+                             data-endelementdelay="0.1"
+                             style="z-index: 99; max-width: auto; max-height: auto; white-space: nowrap;font-size: 30px">Le voyage apprend la tolérance
+                        </div>
+
+                        <!-- LAYER NR. 2 -->
+                        <div class="tp-caption grey_heavy_72 sfb tp-resizeme rs-parallaxlevel-0 tp-headline-2"
+                             data-x="center"
+                             data-y="250"
+                             data-speed="500"
+                             data-start="1350"
+                             data-easing="Power3.easeInOut"
+                             data-splitin="lines"
+                             data-splitout="none"
+                             data-elementdelay="0.1"
+                             data-endelementdelay="0.1"
+                             style="z-index: 99; max-width: auto; max-height: auto; white-space: nowrap;">SHARE THE FARE
+                        </div>
+
+                        <!-- LAYER NR. 3 -->
+                        <div class="tp-caption grey_heavy_72 sfl tp-resizeme rs-parallaxlevel-0"
+                             data-x="center"
+                             data-y="300"
+                             data-hoffset="-83"
+                             data-speed="500"
+                             data-start="2050"
+                             data-easing="Power3.easeInOut"
+                             data-splitin="none"
+                             data-splitout="none"
+                             data-elementdelay="0.1"
+                             data-endelementdelay="0.1"
+                             style="z-index: 99; max-width: auto; max-height: auto; white-space: nowrap;padding-left: 150px"><a href="{{ path('covoiturage_contact') }}" class='btn btn-primary'>contactez nous</a>
+                        </div>
+
+                    </li>
+                </ul>
+                <div class="tp-bannertimer"></div>
+            </div><!-- /tp-banner -->
+        </div><!-- /tp-banner-container -->
+    </section>
+    <!-- END / HOME MEDIA -->
+    <section class="section bg-white pt-50 pb-50">
+        <div class="container">
+            <div class="row">
+    <form id="contact-form" method="post">
+        <div class="group clearfix">
+            <i class="fa fa-map-marker fa-2x" aria-hidden="true" style="color: gold" ></i>
+                <input type="text" name="Depart" placeholder="Départ" style="width: 22%"/>
+
+
+            <i class="fa fa-map-marker fa-2x" aria-hidden="true" style="margin-left: 3%;color: gold" ></i>
+            <input type="text" name="Destination" placeholder="Destination" style="width: 22%"  />
+            <i class="fa fa-calendar fa-2x" aria-hidden="true" style="margin-left: 3%;color: gold"></i>
+            <input type="date" name="Date" placeholder="Date" style="width: 22%"  />
+
+
+
+        <button type="submit" class="btn btn-primary radius" style="margin-left: 5%"  >Chercher</button>
+        
+        </div><!-- /group -->
+        <div id="contact-content" style="padding-top: 20px"></div>
+    </form>
+</div></div></section>
+
+
+
+    <!-- ICON BOX -->
+    <section class="section bg-gray pt-50 pb-0">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-lg-push-4 col-sm-6 col-xs-12">
+                    <div class="cortana-icon">
+                        <i class="fa fa-anchor"></i>
+                        <h5 class="text-uppercase">Intégrité</h5>
+                        <p>
+                            Une tradition de conduite éthique et honnête des affaires est la pierre angulaire de notre philosophie d'entreprise et le fondement de toute notre organisation.</p>
+                    </div><!-- /cortana-icon -->
+
+                    <div class="cortana-icon">
+                        <i class="fa fa-users"></i>
+                        <h5 class="text-uppercase">Personnel</h5>
+                        <p>EDT-ONE est une équipe de développement informatique composé de 5 membres dedié pour le développement des application multiplateformes.</p>
+                    </div><!-- /cortana-icon -->
+                </div><!-- /col -->
+
+                <div class="col-lg-4 col-lg-push-4 col-sm-6 col-xs-12">
+                    <div class="cortana-icon">
+                        <i class="fa fa-eye"></i>
+                        <h5 class="text-uppercase">Vision</h5>
+                        <p>Une mutualisation des moyens opérationnels et un soutien pour l'innovation pédagogique et scientifique avec contact permanent avec nos clients.</p>
+                    </div><!-- /cortana-icon -->
+
+                    <div class="cortana-icon">
+                        <i class="fa fa-shield"></i>
+                        <h5 class="text-uppercase">sécurité</h5>
+                        <p>Les passagers contribuent aux frais du voyage le conducteur ne peut donc pas gagner d'argent.</p>
+                    </div><!-- /cortana-icon -->
+                </div><!-- /col -->
+
+                <div class="col-lg-4 col-lg-pull-8 col-sm-12 col-xs-12">
+                    <img src="{{ asset('img/principes/boy-passenger-iloveimg-resized.png') }}" alt="" style="    padding-top: 20px;
+    padding-right: 40px;"/>
+                </div><!-- /col -->
+            </div><!-- /row -->
+        </div><!-- /container -->
+    </section>
+    <!-- END / ICON BOX -->
+
+
+
+    <!-- TESTIMONIAL - CLIENT -->
+    <section class="section bg-white bd-b pt-70 pb-70">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-xs-12">
+                    <h2 class="section-header">Testimonials</h2>
+                    <div class="testimonial testimonial-slider" data-number-slide="1">
+                        <div class="item">
+                            <div class="testimonial-status white">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,</div>
+                            <div class="testimonial-author clearfix">
+                                <img src="{{ asset('photo_membre/2.jpeg') }}" alt="" class="img-circle" />
+                                <h5 class="text-uppercase text-right">Mark Alexis</h5>
+                                <p class=" text-right">Ceo &amp; Founder - envato</p>
+                            </div><!-- /testimonial-author -->
+                        </div><!-- /item -->
+
+                        <div class="item">
+                            <div class="testimonial-status white">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,</div>
+                            <div class="testimonial-author clearfix">
+                                <img src="{{ asset('photo_membre/2d0a95006cbe542b2c6a9135014f635f.jpeg') }}" alt="" class="img-circle" />
+                                <h5 class="text-uppercase text-right">Jennifer Holland</h5>
+                                <p class=" text-right">Ceo &amp; Founder - envato</p>
+                            </div><!-- /testimonial-author -->
+                        </div><!-- /item -->
+
+                    </div><!-- /testimonial -->
+                </div><!-- /col -->
+
+                <div class="col-sm-6 col-xs-12">
+                    <h2 class="section-header">Notre équipe</h2>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 col-xs-12 mb-30">
+                            <div class="client-logo">
+                                <img src="{{ asset('img/team/2.jpeg') }}" alt="" />
+                            </div><!-- /client-logo -->
+                        </div><!-- /col -->
+
+                        <div class="col-lg-4 col-md-6 col-xs-12 mb-30">
+                            <div class="client-logo">
+                                <img src="{{ asset('img/team/ahmed.jpg') }}" alt="" />
+                            </div><!-- /client-logo -->
+                        </div><!-- /col -->
+
+                        <div class="col-lg-4 col-md-6 col-xs-12 mb-30">
+                            <div class="client-logo">
+                                <img src="{{ asset('img/team/fenina.jpg') }}" alt="" />
+                            </div><!-- /client-logo -->
+                        </div><!-- /col -->
+
+                        <div class="col-lg-4 col-md-6 col-xs-12 mb-30">
+                            <div class="client-logo">
+                                <img src="{{ asset('img/team/maalej.jpg') }}" alt="" />
+                            </div><!-- /client-logo -->
+                        </div><!-- /col -->
+
+                        <div class="col-lg-4 col-md-6 col-xs-12 mb-30">
+                            <div class="client-logo">
+                                <img src="{{ asset('img/team/mehdi.jpg') }}" alt="" />
+                            </div><!-- /client-logo -->
+                        </div><!-- /col -->
+
+                    </div><!-- /row -->
+                </div><!-- /col -->
+            </div><!-- /row -->
+        </div><!-- /container -->
+    </section>
+    <!-- END / TESTIMONIAL - CLIENT -->
+
+
+
+    <!-- COUNTER 1 -->
+    <section class="section bg-grey bd-b pb-50" style="padding-top: 4%">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="counter">
+                        <p class="count-number">3468</p>
+                        <h3>Annonces publiées</h3>
+                    </div><!-- /counter -->
+                </div><!-- /col -->
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="counter">
+                        <p class="count-number">4638</p>
+                        <h3>Clients</h3>
+                    </div><!-- /counter -->
+                </div><!-- /col -->
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="counter">
+                        <p class="count-number">3468</p>
+                        <h3>Voitures</h3>
+                    </div><!-- /counter -->
+                </div><!-- /col -->
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="counter">
+                        <p class="count-number">3468</p>
+                        <h3>Cup of coffee</h3>
+                    </div><!-- /counter -->
+                </div><!-- /col -->
+            </div><!-- /row -->
+        </div><!-- /container -->
+        <div class="stat-trigger"></div>
+    </section>
+    <!-- END / COUNTER 1 -->
+
+
+
+
+<!-- FOOTER -->
+<footer id="footer" class="footer bg-dark">
+
+    <div class="foot-credit">
+        <div class="container">
+            <ul>
+
+
+
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                <li><a href="{{ path('covoiturage_contact') }}">Contactez nous</a></li>
+                {% else %}
+                    <li>
+                        <a href="{{ path('fos_user_registration_register') }}">
+                            Inscription</a>
+                    </li>
+                    <li><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
+                    <li><a href="{{ path('covoiturage_contact') }}">Contactez nous</a></li>
+                {% endif %}
+            </ul>
+            <p>Share The Fare &copy; 2017 By EDT-ONE. All rights Reserved</p>
+        </div><!-- /container -->
+    </div><!-- /foot-credit -->
+</footer>
+
+
+<!-- END / FOOTER -->
+</div><!-- /page-wrap -->
+<!-- JQUERY -->
+<script type="text/javascript" src="{{asset('js/lib/jquery-1.11.3.min.js')}}"></script>
+
+
+<!-- Bootstrap -->
+<script type="text/javascript" src="{{asset('js/lib/bootstrap.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/lib/jquery.bootstrap-touchspin.min.js')}}"></script>
+
+<!-- Revolution Slider -->
+<script type="text/javascript" src="{{asset('rs-plugin/js/jquery.themepunch.tools.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('rs-plugin/js/jquery.themepunch.revolution.min.js')}}"></script>
+<!-- Owl Carousel -->
+<script type="text/javascript" src="{{asset('js/lib/owl.carousel.min.js')}}"></script>
+<!-- Overflow Text -->
+<script type="text/javascript" src="{{asset('js/lib/overflow-text.js')}}"></script>
+
+<!-- Easing -->
+<script type="text/javascript" src="{{asset('js/lib/jquery.easing.min.js')}}"></script>
+
+<!-- Select to div -->
+<script type="text/javascript" src="{{asset('js/lib/select2.min.js')}}"></script>
+
+<!-- Parallax -->
+<script type="text/javascript" src="{{asset('js/lib/jquery.parallax-1.1.3.js')}}"></script>
+
+<!-- Waypoint -->
+<script type="text/javascript" src="{{asset('js/lib/waypoints.min.js')}}"></script>
+
+<!-- Count To -->
+<script type="text/javascript" src="{{asset('js/lib/jquery.countTo.js')}}"></script>
+
+<!-- Magnific Popup -->
+<script type="text/javascript" src="{{asset('js/lib/jquery.magnific-popup.min.js')}}"></script>
+
+<!-- Image Loaded -->
+<script type="text/javascript" src="{{asset('js/lib/imagesloaded.pkgd.min.js')}}"></script>
+
+<!-- Isotope -->
+<script type="text/javascript" src="{{asset('js/lib/isotope.pkgd.min.js')}}"></script>
+
+
+<!-- Custom jQuery -->
+<script type="text/javascript" src="{{asset('js/scripts.js')}}"></script>
+
+</body>
+</html>

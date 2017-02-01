@@ -1,0 +1,14 @@
+.page-not-found{
+	position: relative;
+	text-align: center;
+	.container{
+		width: 100%;
+	    display: table;
+	    height: 100vh;
+	    .site-content{
+			display: table-cell;
+		    vertical-align: middle;
+		    padding: 50px 0;
+	    }
+	}
+}

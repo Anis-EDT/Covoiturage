@@ -1,0 +1,16 @@
+.sidebar{
+	position: relative;
+	&.sidebar-2{
+		border: 2px solid $color;
+		padding: 30px;
+		background-color: #f9f9f9;
+		.widget{
+			.widget-title{
+				padding-bottom: 0;
+				&:before{
+					display: none;
+				}
+			}
+		}
+	}
+}

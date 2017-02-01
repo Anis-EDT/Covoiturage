@@ -1,0 +1,144 @@
+.owl-carousel{
+	.owl-item{
+		img{
+			@include backface;
+		}
+	}
+
+	.owl-controls{
+		.owl-nav{
+			text-align: center;
+			div{
+				display: inline-block;
+				margin: 0 15px;
+				background-color: rgba(0, 0, 0, 0.9);
+				color: #fff;
+				padding: 13px 20px;
+				@include transition;
+				span{
+					font-size: 1.4em;
+				}
+				&:hover{
+					background-color: rgba(255, 255, 255, 1);
+					color: #444;
+				}
+			}
+			&:after{
+				content: '';
+				display: table;
+				clear: both;
+			}
+		}
+		.owl-dots{
+			text-align: center;
+			div{
+				display: inline-block;
+				margin: 0 4px;
+				span{
+					display: block;
+					width: 7px;
+				    height: 7px;
+				    border: 0;
+				    background-color: #000;
+				    @include rounded(50%);
+				}
+				&.active{
+					span{
+						background-color: $color;
+					}
+				}
+			}
+		}
+	}
+}
+
+// Portfolio Slider
+.portfolio-slider{
+	.owl-controls{
+		.owl-nav{
+			position: absolute;
+			width: 100%;
+		    top: calc(50% - 25px);
+		    left: 0;
+			padding: 0;
+			div{
+				position: absolute;
+				@include translateY(-50%);
+				&.owl-prev{
+					left: 0;
+					margin-left: 0;
+				}
+				&.owl-next{
+					right: 0;
+					margin-right: 0;
+				}
+			}
+		}
+		.owl-dots{
+			div{
+				&.active{
+					span{
+						background-color: #fff;
+					}
+				}
+			}
+		}
+	}
+}
+
+// Work Item Slider
+.work-slider{
+	.owl-controls{
+		.owl-nav{
+			position: absolute;
+			width: 100%;
+		    top: 50%;
+		    left: 0;
+			padding: 0;
+			opacity: 0;
+			@include transition(opacity .4s ease);
+			div{
+				position: absolute;
+				@include translateY(-50%);
+				opacity: .9;
+				&.owl-prev{
+					left: 0;
+					margin-left: 0;
+				}
+				&.owl-next{
+					right: 0;
+					margin-right: 0;
+				}
+			}
+		}
+	}
+	&:hover{
+		.owl-controls{
+			.owl-nav{
+				opacity: 1;
+			}
+		}
+	}
+}
+.work-item-slider-wrapper{
+	position: relative;
+	padding: 0 50px;
+	margin-bottom: 30px;
+	.owl-item{
+		cursor: pointer;
+		img{
+			opacity: 0.5;
+		}
+		&:hover{
+			img{
+				opacity: 1;
+			}
+		}
+	}
+	.owl-controls{
+		display: none;
+	}
+	@media screen and (max-width: 480px){
+		display: none;
+	}
+}

@@ -1,0 +1,23 @@
+.progress {
+  position: relative;
+  background: #eee;
+  margin-bottom: 30px;
+  width: 100%;
+  height: 10px;
+  @include box-shadow(0 0 0);
+  @include rounded(0);
+  .progress-bar{
+    position: absolute;
+    background: $color;
+    left: 0;
+    top: 0;
+    @include box-shadow(0 0 0);
+    @include transition(width 1s ease);
+    @include transition-delay(.5s);
+  }
+  &.progress-2{
+    .progress-bar{
+      background-color: #444;
+    }
+  }
+}

@@ -1,0 +1,116 @@
+.footer{
+	position: relative;
+	.foot-widget{
+		position: relative;
+		padding-top: 80px;
+		padding-bottom: 40px;
+		.widget{
+			margin-bottom: 50px;
+			.widget-title{
+				margin-bottom: 40px;
+				color: #fff;
+				padding-bottom: 0;
+				&:before{
+					display: none;
+				}
+			}
+			ul{
+				li{
+					line-height: 3.1em;
+					color: #878787;
+					&:hover{
+						color: #fff;
+						a{
+							color: #fff;
+						}
+					}
+				}
+			}
+			p{
+				color: #888;
+			}
+			&.widget_recent_entries{
+				ul{
+					li{
+						line-height: 1.6em;
+					}
+				}
+			}
+			&.widget_tweet{
+				ol{
+					li{
+						h5,
+						h6{
+							color: #878787;
+						}
+					}
+				}
+			}
+			@media screen and (max-width: 991px){
+				.widget-title{
+					margin-bottom: 20px;
+				}
+			}
+		}
+	}
+
+	.foot-credit{
+		position: relative;
+		padding: 20px 0;
+		background-color: #111;
+		p{
+			float: left;
+			font-family: $mt;
+			font-size: 13px;
+			color: #878787;
+			text-transform: uppercase;
+			line-height: 2.5em;
+			margin-bottom: 0;
+		}
+		ul{
+			float: right;
+			list-style: none;
+			padding-left: 0;
+			li{
+				display: inline-block;
+				margin-left: 30px;
+				&:first-child{
+					margin-left: 0;
+				}
+				a{
+					text-transform: uppercase;
+					font-size: 12px;
+					font-weight: 700;
+					display: block;
+					&:hover{
+						color: #fff;
+					}
+				}
+			}
+		}
+		@media screen and (max-width: 991px){
+			p, ul{
+				float: none;
+				text-align: center;
+			}
+		}
+		@media screen and (max-width: 767px){
+			ul{
+				li{
+					display: block;
+					margin-left: 0;
+				}
+			}
+		}
+	}
+
+	.btn{
+		&.btn-primary{
+			&:hover,
+			&:focus,
+			&:active{
+				border: 1px solid #fff;
+			}
+		}
+	}
+}

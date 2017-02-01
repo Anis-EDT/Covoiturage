@@ -1,0 +1,29 @@
+#sub-header{
+	.sub-wrapper{
+		position: relative;
+		padding-top: 110px;
+		padding-bottom: 150px;
+		@media screen and (max-width: 767px){
+			text-align: center;
+		}
+	}
+}
+
+.bg-parallax{
+	.sub-wrapper{
+		position: relative;
+		padding: 100px 0;
+		h1{
+			font-size: 45px;
+			text-transform: uppercase;
+			font-weight: 700;
+			margin-bottom: 20px;
+		}
+		h2{
+			font-family: $pd;
+			font-style: italic;
+			letter-spacing: 1px;
+			line-height: 1.6em;
+		}
+	}
+}

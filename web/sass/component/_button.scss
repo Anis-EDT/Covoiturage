@@ -1,0 +1,121 @@
+.btn{
+	position: relative;
+	font-size: 13px;
+	text-transform: uppercase;
+	display: inline-block;
+	border: 0;
+	white-space: normal;
+	padding: 13px 25px;
+	letter-spacing: 1px;
+	font-family: $mt;
+	@include rounded(0);
+	@include transition;
+	&:hover,
+	&:focus{
+		text-decoration: none !important;
+		box-shadow: 0 0 0;
+	}
+	i.fa{
+		margin-right: 5px;
+	}
+	&.radius{
+		@include rounded(3px);
+	}
+	&.fullwidth{
+		width: 100%;
+	}
+
+	&.btn-primary{
+		color: #fff;
+		background-color: $color;
+		border: 1px solid transparent;
+		&:hover,
+		&:focus{
+			background-color: #222;
+		}
+	}
+	&.btn-black,
+	&.btn-black-2{
+		color: #fff;
+		background-color: #111;
+		border: 1px solid transparent;
+		&:hover,
+		&:focus{
+			color: #111;
+			background-color: #fff;
+		}
+		&.bordered{
+			border: 1px solid #fff;
+		}
+		&.radius{
+			@include rounded(3px);
+		}
+	}
+	&.btn-black-2{
+		&:hover,
+		&:focus{
+			color: #fff;
+			background-color: $color;
+		}
+	}
+
+	&.btn-gray{
+		color: #666;
+		background-color: #f9f9f9;
+		font-weight: 700;
+		&:hover,
+		&:focus{
+			color: #fff;
+			background-color: $color;
+		}
+	}
+	&.btn-download{
+		color: #666;
+		background-color: #fff;
+		border: 1px solid #eee;
+		i{
+			margin-right: 15px;
+			font-size: 1.2em;
+			vertical-align: middle;
+		}
+		&:hover,
+		&:focus{
+			background-color: #f9f9f9;
+		}
+	}
+	&.btn-transparent{
+		color: #fff;
+		background-color: transparent;
+		border: 1px solid #fff;
+		&:hover,
+		&:focus{
+			background-color: #fff;
+			color: #444;
+		}
+	}
+}
+
+.btn-remove{
+	width: 11px;
+    height: 11px;
+    background-color: transparent;
+    border: 0;
+    position: relative;
+    padding: 0;
+    &:before,
+    &:after{
+    	content: '';
+	    position: absolute;
+	    width: 10px;
+	    height: 1px;
+	    left: 0;
+	    top: 50%;
+	    background-color: #444;
+	}
+	&:before{
+		@include rotate(45);
+	}
+	&:after{
+		@include rotate(-45);
+	}
+}

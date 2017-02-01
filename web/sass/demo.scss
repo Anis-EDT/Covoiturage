@@ -1,0 +1,166 @@
+@import "utils/variable";
+@import "utils/mixins";
+// Demo Navigation
+.header{
+	.main-header{
+		&.main-header-2{
+			.navigation{
+				ul{
+					> li{
+						&.menu-item-has-children{
+							> ul.sub-menu{
+							 	> li{
+							 	 	&.activeHover{
+							 	 		> a{
+							 	 			color: $color;
+							 	 		}
+							 	 	}
+							 	}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		&.main-header-3{
+			.navigation{
+				ul{
+					> li{
+						&.menu-item-has-children{
+							> ul.sub-menu{
+							 	> li{
+							 	 	&.activeHover{
+							 	 		> a{
+							 	 			color: $color;
+							 	 		}
+							 	 	}
+							 	}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		&.main-header-4{
+			.navigation{
+				ul{
+					> li{
+						&.menu-item-has-children{
+							> ul.sub-menu{
+							 	> li{
+							 	 	&.activeHover{
+							 	 		> a{
+							 	 			color: $color;
+							 	 		}
+							 	 	}
+							 	}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		&.main-header-5{
+			+ .navBar5{
+				.navigation{
+					ul{
+						> li{
+							&.menu-item-has-children{
+								> ul.sub-menu{
+								 	> li{
+								 	 	&.activeHover{
+								 	 		> a{
+								 	 			color: $color;
+								 	 		}
+								 	 	}
+								 	}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+
+		&.main-header-6{
+			+ .navBar6{
+				.navigation{
+					ul{
+						> li{
+							&.menu-item-has-children{
+								> ul.sub-menu{
+								 	> li{
+								 	 	&.activeHover{
+								 	 		> a{
+								 	 			color: $color;
+								 	 		}
+								 	 	}
+								 	}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.navigation{
+	ul{
+		> li{
+			&.menu-item-has-children{
+				> ul.sub-menu{
+					> li{
+						&.activeHover{
+							background-color: #222;
+							> a{
+								color: $color;
+							}
+						}
+						&.menu-item-has-children{
+							&.activeHover{
+								> ul.sub-menu{
+									@include translateX(0);
+								}
+							}
+						}
+					}
+				}
+				&.activeHover{
+					> ul.sub-menu{
+						opacity: 1;
+						visibility: visible;
+						@include translateY(0);
+					}
+				}
+				&.megamenu{
+					&.activeHover{
+						ul{
+							li{
+								&.menu-item-has-children{
+									> ul.sub-menu{
+										opacity: 1;
+										visibility: visible;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.searchbar{
+	opacity: 0;
+	visibility: hidden;
+	&.active{
+		opacity: 1;
+		visibility: visible;
+	}
+}

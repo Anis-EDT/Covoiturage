@@ -1,0 +1,36 @@
+.star-rating{
+	position: relative;
+	overflow: hidden;
+	width: 7.3em;
+	height: 1em;
+	margin-top: 10px;
+	font-size: 12px;
+	letter-spacing: 8px;
+	&:before{
+		font-family: "FontAwesome";
+		content: '\f005\f005\f005\f005\f005';
+		position: absolute;
+		top: 0;
+		left: 0;
+		line-height: 1em;
+		color: #aaa;
+	}
+	span{
+		overflow: hidden;
+		position: absolute;
+		padding-top: 1.5em;
+		&:before{
+			font-family: "FontAwesome";
+			content: '\f005\f005\f005\f005\f005';
+			color: $color;
+			position: absolute;
+			top: 0;
+			left: 0;
+			line-height: 1em;
+		}
+	}
+	// IE 10+
+	@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+		width: 8em;
+	}
+}

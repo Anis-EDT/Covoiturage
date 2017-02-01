@@ -1,0 +1,40 @@
+.gallery{
+	position: relative;
+	.gallery-item{
+		position: relative;
+		float: left;
+		display: inline-block;
+		&.gallery-col-3{
+			width: 33.333333%;
+			@media screen and (max-width: 991px){
+				width: 50%;
+			}
+			@media screen and (max-width: 767px){
+				width: 100%;
+			}
+		}
+		&.gallery-col-4{
+			width: 25%;
+			@media screen and (max-width: 1199px){
+				width: 50%;
+			}
+			@media screen and (max-width: 767px){
+				width: 100%;
+			}
+		}
+	}
+	&.gallery-2{
+		margin-right: -15px;
+		margin-left: -15px;
+		.gallery-item{
+			padding-right: 15px;
+			padding-left: 15px;
+			margin-bottom: 30px;
+			a.mfp-image{
+				width: calc(100% - 30px);
+				right: 0;
+				margin: 0 auto;
+			}
+		}
+	}
+}

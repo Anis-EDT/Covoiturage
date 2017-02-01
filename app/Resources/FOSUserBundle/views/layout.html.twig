@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<!--[if IE 7 ]> <html class="ie ie7"> <![endif]-->
+<!--[if IE 8 ]> <html class="ie ie8"> <![endif]-->
+<!--[if IE 9 ]> <html class="ie ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="" lang="en"> <!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    {% block stylesheets %}
+        <!-- GOOGLE FONT -->
+        <link href="{{asset('https://fonts.googleapis.com/css?family=Montserrat:400,700') }}" rel='stylesheet' type='text/css'>
+        <link href="{{asset('https://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic') }}" rel='stylesheet' type='text/css'>
+        <link href="{{asset('https://fonts.googleapis.com/css?family=Raleway:100,300,400,500,600,700') }}" rel='stylesheet' type='text/css'>
+
+        <!-- CSS LIBRARY -->
+        <!-- Bootstrap -->
+        <link type="text/css" href="{{asset('css/lib/bootstrap.min.css') }}" rel="stylesheet">
+        <link type="text/css" href="{{asset('css/lib/jquery.bootstrap-touchspin.min.css') }}" rel="stylesheet">
+
+        <!-- Font Icon -->
+        <link type="text/css" href="{{asset('css/lib/font-awesome.min.css') }}" rel="stylesheet">
+        <link type="text/css" href="{{asset('css/lib/cortana.css') }}" rel="stylesheet">
+
+        <!-- Revolution Slider -->
+        <link type="text/css" href="{{asset('rs-plugin/css/settings.css') }}" rel="stylesheet">
+        <!-- Owl Carousel -->
+        <link type="text/css" href="{{asset('css/lib/owl.carousel.css') }}" rel="stylesheet">
+
+        <!-- Select into div -->
+        <link type="text/css" href="{{asset('css/lib/select2.min.css') }}" rel="stylesheet">
+
+        <!-- Magnific Popup -->
+        <link type="text/css" href="{{asset('css/lib/magnific-popup.css') }}" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link type="text/css" href="{{asset('css/style.css') }}" rel="stylesheet">
+
+    {% endblock %}
+    {% block javascripts %}
+
+
+        <script src="{{asset('https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js') }}"></script>
+        <script src="{{asset('https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js') }}"></script>
+
+        <![endif]-->
+    {% endblock %}
+    <title>Connexion</title>
+</head>
+    <body>
+
+    <!-- PRELOAD -->
+    <div id="preload" class="preload">
+        <div class="flat"></div>
+        <div class="square"></div>
+        <div class="square-2"></div>
+        <div class="square-3"></div>
+        <div class="square-4"></div>
+    </div>
+    <!-- /END PRELOAD -->
+    <header class="header head3">
+        <div class="searchbar">
+            <div class="container">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                    <input type="text" name="search" value="" placeholder="Search" />
+                    <span class="input-group-btn"><button type="button" class="btn-close"></button></span>
+                </div><!-- /input-group -->
+            </div><!-- /container -->
+        </div><!-- /searchbar -->
+
+
+
+        <div class="main-header main-header-3">
+            <div class="container">
+                <!-- LOGO -->
+                <div class="logo">
+                    <a href="{{ path('covoiturage_homepage') }}"><img src="{{asset('img/logo2.png')}}" /></a>
+                </div><!-- /#logo -->
+                <!-- END / LOGO -->
+
+                <!-- MOBILE MENU -->
+                <div class="mobile-nav-menu" data-menu-number="3">
+                    <span class="icon">&nbsp;</span>
+                </div><!-- /mobile-nav-menu -->
+                <!-- /END MOBILE MENU -->
+
+
+
+                <!-- NAVIGATION -->
+                <nav class="navigation nav3" data-menu-type="1199">
+                    <ul class="nav text-uppercase">
+
+                        <li>
+                            <a href="{{ path('fos_user_registration_register') }}">
+                                Inscription</a>
+                        </li>
+                        <li><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
+                        <li><a href="{{ path('covoiturage_contact') }}">Contactez nous</a></li>
+                    </ul><!-- /nav -->
+                </nav>
+                <!-- END / NAVIGATION -->
+            </div><!-- /container -->
+        </div><!-- /main-header -->
+    </header><!-- /header -->
+    <!-- END / HEADER 3 -->
+    <div align="center" style="margin-top: 7%;margin-bottom: 7%">
+
+
+        {% if app.request.hasPreviousSession %}
+            {% for type, messages in app.session.flashbag.all() %}
+                {% for message in messages %}
+                    <div class="flash-{{ type }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
+
+        <div>
+            {% block fos_user_content %}
+            {% endblock fos_user_content %}
+        </div>
+</div>
+
+    <!-- FOOTER -->
+    <footer id="footer" class="footer bg-dark">
+
+        <div class="foot-credit">
+            <div class="container">
+                <ul>
+
+                    <li>
+                        <a href="{{ path('fos_user_registration_register') }}">
+                            Inscription</a>
+                    </li>
+                    <li><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
+                    <li><a href="{{ path('covoiturage_contact') }}">Contactez nous</a></li>
+                </ul>
+                <p>Share The Fare &copy; 2017 By EDT-ONE. All rights Reserved</p>
+            </div><!-- /container -->
+        </div><!-- /foot-credit -->
+    </footer>
+
+
+    <!-- END / FOOTER -->
+    </div><!-- /page-wrap -->
+        <!-- JQUERY -->
+        <script type="text/javascript" src="{{asset('js/lib/jquery-1.11.3.min.js')}}"></script>
+    <script src="{{asset('http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js')}}"></script>
+
+        <!-- Bootstrap -->
+        <script type="text/javascript" src="{{asset('js/lib/bootstrap.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('js/lib/jquery.bootstrap-touchspin.min.js')}}"></script>
+
+        <!-- Revolution Slider -->
+        <script type="text/javascript" src="{{asset('rs-plugin/js/jquery.themepunch.tools.min.js')}}"></script>
+        <script type="text/javascript" src="{{asset('rs-plugin/js/jquery.themepunch.revolution.min.js')}}"></script>
+        <!-- Owl Carousel -->
+        <script type="text/javascript" src="{{asset('js/lib/owl.carousel.min.js')}}"></script>
+        <!-- Overflow Text -->
+        <script type="text/javascript" src="{{asset('js/lib/overflow-text.js')}}"></script>
+
+        <!-- Easing -->
+        <script type="text/javascript" src="{{asset('js/lib/jquery.easing.min.js')}}"></script>
+
+        <!-- Select to div -->
+        <script type="text/javascript" src="{{asset('js/lib/select2.min.js')}}"></script>
+
+        <!-- Parallax -->
+        <script type="text/javascript" src="{{asset('js/lib/jquery.parallax-1.1.3.js')}}"></script>
+
+        <!-- Waypoint -->
+        <script type="text/javascript" src="{{asset('js/lib/waypoints.min.js')}}"></script>
+
+        <!-- Count To -->
+        <script type="text/javascript" src="{{asset('js/lib/jquery.countTo.js')}}"></script>
+
+        <!-- Magnific Popup -->
+        <script type="text/javascript" src="{{asset('js/lib/jquery.magnific-popup.min.js')}}"></script>
+
+        <!-- Image Loaded -->
+        <script type="text/javascript" src="{{asset('js/lib/imagesloaded.pkgd.min.js')}}"></script>
+
+        <!-- Isotope -->
+        <script type="text/javascript" src="{{asset('js/lib/isotope.pkgd.min.js')}}"></script>
+
+
+        <!-- Custom jQuery -->
+        <script type="text/javascript" src="{{asset('js/scripts.js')}}"></script>
+    </body>
+</html>

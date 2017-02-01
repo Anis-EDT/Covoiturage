@@ -1,0 +1,12 @@
+covoiturageuser_homepage:
+    path:     /
+    defaults: { _controller: covoiturageuserBundle:Default:index }
+covoiturage_homepage:
+    path:     /accueil
+    defaults: { _controller: covoiturageuserBundle:front:accueil }
+covoiturage_contact:
+    path:     /contact
+    defaults: { _controller: covoiturageuserBundle:front:contact }
+covoiturage_check:
+    path:     /check
+    defaults: { _controller: covoiturageuserBundle:front:check }

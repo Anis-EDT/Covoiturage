@@ -1,0 +1,35 @@
+// THUMBNAIL
+.post-thumbnail{
+	position: relative;
+	overflow: hidden;
+	margin-bottom: 30px;
+	img{
+		width: 100%;
+	}
+	iframe{
+		width: 100%;
+	}
+	.overlay{
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		z-index: 10;
+		// i{
+		// 	display: none;
+		// }
+	}
+	.latest{
+		position: absolute;
+		top: 10%;
+		left: 0;
+		background-color: $color;
+		color: #fff;
+		text-transform: uppercase;
+		font-size: 13px;
+		font-family: $mt;
+		padding: 3px 10px;
+		letter-spacing: 1px;
+	}
+}

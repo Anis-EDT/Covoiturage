@@ -1,0 +1,51 @@
+.section{
+	position: relative;
+	overflow: hidden;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background-position: 50% 50%;
+    @include bg-size;
+    z-index: 10;
+    @media screen and (max-width: 991px){
+		.pull-left,
+		.pull-right{
+			float: none !important;
+			// text-align: center;
+		}
+	}
+}
+
+.section-header{
+	position: relative;
+	padding-bottom: 20px;
+	margin-bottom: 30px;
+	font-size: 14px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	&:after{
+		content: '';
+		width: 40px;
+		height: 2px;
+		background-color: $color;
+		position: absolute;
+		left: 0;
+		bottom: 0;
+	}
+	&.center{
+		text-align: center;
+		&:after{
+			right: 0;
+			margin: 0 auto;
+		}
+	}
+	&.big{
+		font-size: 20px;
+	}
+	// @media screen and (max-width: 991px){
+	// 	text-align: center;
+	// 	&:after{
+	// 		right: 0;
+	// 		margin: 0 auto;
+	// 	}
+	// }
+}

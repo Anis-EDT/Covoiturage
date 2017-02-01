@@ -1,0 +1,27 @@
+.checkbox-style{
+	position: relative;
+	input[type="checkbox"]{
+		&:checked{
+			visibility: hidden;
+			+ label{
+				&:before{
+					opacity: 1;
+				}
+			}
+		}
+	}
+	label{
+		&:before{
+			content: '\f14a';
+			font-family: 'FontAwesome';
+			position: absolute;
+			font-size: 15px;
+			color: #3b99fc;
+			top: 50%;
+			left: 0;
+			opacity: 0;
+			@include rounded(4px);
+			@include translateY(-50%);
+		}
+	}
+}

@@ -1,0 +1,97 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Fancy Sliding Form with jQuery</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="description" content="Fancy Sliding Form with jQuery" />
+    <meta name="keywords" content="jquery, form, sliding, usability, css3, validation, javascript"/>
+    <link rel="stylesheet" href="{{ asset('inscription/css/style.css') }}" type="text/css" media="screen"/>
+    <script type="text/javascript" src="{{ asset('http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('inscription/js/sliding.form.js') }}"></script>
+</head>
+
+<body >
+
+<div >
+<div id="content">
+    <h1>Inscription</h1>
+    <div id="wrapper" >
+        <div id="steps">
+                {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+                <fieldset class="step">
+                    <legend>Compte</legend>
+                    <p >{{  form_label(form.email)}}{{ form_widget(form.email, {'attr': {'placeholder': 'Votre email'}}) }}</p>
+                    <p >{{  form_label(form.username)}}{{ form_widget(form.username, {'attr': {'placeholder': 'Votre Login'}}) }}</p>
+                    <p >{{  form_label(form.plainPassword.first)}}{{ form_widget(form.plainPassword.first, {'attr': {'placeholder': 'Votre mot de passe'}}) }}</p>
+                    <p >{{  form_label(form.plainPassword.second)}}{{ form_widget(form.plainPassword.second, {'attr': {'placeholder': 'Répéter mot de passe'}}) }}</p>
+                </fieldset>
+                <fieldset class="step">
+                    <legend>Détails personnels</legend>
+                    <p >{{  form_label(form.nom)}}{{ form_widget(form.nom, {'attr': {'placeholder': 'Votre nom'}}) }}</p>
+                    <p >{{  form_label(form.prenom)}}{{ form_widget(form.prenom, {'attr': {'placeholder': 'Votre prénom'}}) }}</p>
+                    <p >{{  form_label(form.sexe)}}{{ form_widget(form.sexe) }}</p>
+                    <p >{{  form_label(form.telephone)}}{{ form_widget(form.telephone, {'attr': {'placeholder': 'Votre numéro de téléphone'}}) }}</p>
+                    <p >{{  form_label(form.premisConduite)}}{{ form_widget(form.premisConduite) }}</p>
+
+                    <p >{{  form_label(form.photo_Membre)}}{{ form_widget(form.photo_Membre) }}</p>
+                </fieldset>
+                <fieldset class="step">
+                    <legend>Préférences</legend>
+                    <p >{{  form_label(form.musique)}}{{ form_widget(form.musique, {'attr': {'placeholder': 'Type de musique écouté'}}) }}</p>
+                    <p >{{  form_label(form.tabagisme)}}{{ form_widget(form.tabagisme) }}</p>
+                    <p >{{  form_label(form.animaux)}}{{ form_widget(form.animaux) }}</p>
+                </fieldset>
+
+                <fieldset class="step">
+                    <legend>Confirmation</legend>
+                    <p>
+
+                        Tout dans le formulaire a été correctement rempli si toutes les étapes ont une icône de coche verte. Une icône de coche rouge indique qu'un champ est manquant ou rempli de données non valides. Dans cette dernière étape, l'utilisateur peut confirmer la soumission du formulaire.
+                    </p>
+                    <p class="submit" style="margin-left: 35%">
+
+                        <input type="submit" value="{{ 'registration.submit'|trans }}" style="background:gold;color: white" />
+
+                    </p>
+                </fieldset>
+
+        </div>
+        <div id="navigation" style="display:none;">
+            <ul>
+                <li class="selected">
+                    <a href="#">Compte</a>
+                </li>
+                <li>
+                    <a href="#">Détails</a>
+                </li>
+                <li>
+                    <a href="#">Vos préférences</a>
+                </li>
+                <li>
+                    <a href="#">Confirmation</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+{{ form_end(form) }}

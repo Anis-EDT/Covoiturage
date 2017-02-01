@@ -1,0 +1,31 @@
+// Font style
+.fsi {
+    font-style: italic !important;
+}
+// .fsn {
+//     font-style: normal !important;
+// }
+
+// Font weight
+.fw-light{
+	font-weight: 300 !important;
+}
+.fw-normal{
+	font-weight: 400 !important;
+}
+.fw-bold{
+	font-weight: 500 !important;
+}
+.fw-bolder{
+	font-weight: 700 !important;
+}
+
+.mons-font{
+	font-family: $mt !important;
+}
+.play-font{
+	font-family: $pd !important;
+}
+.rale-font{
+	font-family: $rw !important;
+}

@@ -1,0 +1,50 @@
+.cortana-icon{
+	position: relative;
+	padding-left: 60px;
+	margin-bottom: 50px;
+	i{
+		position: absolute;
+		left: 0;
+		top: 5px;
+		background-color: $color;
+		color: #fff;
+		width: 45px;
+		height: 45px;
+		font-size: 1.3em;
+		line-height: 43px;
+		text-align: center;
+		border: 2px solid transparent;
+		@include rounded(50%);
+		@include transition;
+	}
+	&:hover{
+		i{
+			background-color: #fff;
+			color: $color;
+			border: 2px solid $color;
+		}
+	}
+	&.cortana-icon-2{
+		i{
+			background-color: #fff;
+			color: $color;
+			border: 2px solid $color;
+			line-height: 41px;
+		}
+		&:hover{
+			i{
+				background-color: $color;
+				color: #fff;
+			}
+		}
+	}
+	&.center{
+		text-align: center;
+		padding-left: 0;
+		i{
+			position: relative;
+			top: 0;
+			margin-bottom: 25px;
+		}
+	}
+}

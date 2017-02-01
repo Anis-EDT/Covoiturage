@@ -1,0 +1,12 @@
+@media screen and (min-width: 1200px){
+	.container {
+		max-width: 1200px;
+		width: 100%;
+	}
+}
+
+.sidebar-left{
+	[class*="col-"]{
+		float: right;
+	}
+}

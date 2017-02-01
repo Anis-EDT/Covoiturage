@@ -1,0 +1,6 @@
+covoiturageadmin_homepage:
+    path:     /
+    defaults: { _controller: covoiturageadminBundle:Default:index }
+covoiturageadmin_back:
+    path:     /admin/back
+    defaults: { _controller: covoiturageadminBundle:back:back }

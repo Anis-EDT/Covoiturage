@@ -1,0 +1,35 @@
+nav.pager{
+	position: relative;
+	margin: 0;
+	ul.pagination{
+		position: relative;
+		font-size: 14px;
+		font-family: $mt;
+		@include user-select;
+		li{
+			display: inline-block;
+			margin: 0 4px;
+			margin-bottom: 4px;
+			.page-numbers{
+				color: #444;
+				background-color: #eee;
+				padding: 12px 16px;
+				line-height: 1em;
+				border: 0;
+				@include rounded(4px);
+				@include transition;
+				&.current,
+				&:hover{
+					color: #fff;
+					background-color: $color;
+				}
+			}
+			&:first-child{
+				margin-left: 0;
+			}
+			&:last-child{
+				margin-right: 0;
+			}
+		}
+	}
+}

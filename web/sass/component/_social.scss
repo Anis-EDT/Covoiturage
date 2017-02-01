@@ -1,0 +1,59 @@
+ul.social-list{
+	position: relative;
+	padding-left: 0;
+	list-style: none;
+	li{
+		position: relative;
+		display: inline-block;
+	    margin-right: 10px;
+	    margin-bottom: 10px;
+	    width: 30px;
+	    height: 30px;
+	    background-color: rgba(255, 255, 255, .5);
+	    // border: 2px solid #525252;
+	    @include rounded(50%);
+	    @include transition;
+		a{
+			position: relative;
+			line-height: 30px;
+			text-align: center;
+			margin: auto;
+			display: block;
+			color: #222;
+		}
+		&:last-child{
+			margin-right: 0;
+		}
+		&:hover{
+			background-color: rgba(255, 255, 255, 1);
+			a{
+				color: #222 !important;
+			}
+		}
+	}
+	&.black{
+		li{
+			background-color: #222;
+			a{
+				color: #fff;
+			}
+			&:hover{
+				background-color: $color;
+			}
+		}
+	}
+	&.primary{
+		li{
+			background-color: $color;
+			a{
+				color: #fff;
+			}
+			&:hover{
+				background-color: #000;
+				a{
+					color: #fff !important;
+				}
+			}
+		}
+	}
+}

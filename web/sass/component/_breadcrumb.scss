@@ -1,0 +1,62 @@
+.breadcrumb-container{
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.6);
+	padding: 15px 15px 0;
+	span{
+		float: left;
+		margin-right: 10px;
+		text-transform: uppercase;
+		color: #fff;
+		font-size: 13px;
+		font-weight: 700;
+		line-height: 1.7em;
+		padding-left: 20px;
+		margin-bottom: 15px;
+		position: relative;
+		&:before{
+			position: absolute;
+			left: 0;
+			top: 0;
+			content: '\f111';
+			font-family: 'FontAwesome';
+			color: $color;
+			font-size: 9px;
+		}
+	}
+	.breadcrumb{
+		background-color: transparent;
+		float: left;
+		margin-bottom: 15px;
+		padding: 0;
+		line-height: 1em;
+		> li{
+			line-height: 1.5em;
+			color: #fff;
+			font-family: $pd;
+			font-style: italic;
+			font-size: 13px;
+			text-transform: capitalize;
+			+ li{
+				&:before{
+					font-style: normal;
+					padding: 0 10px;
+					content: '\f105';
+					font-family: "FontAwesome";
+					color: $color;
+				}
+			}
+		}
+	}
+	&.right{
+		right: 0;
+		left: auto;
+	}
+	@media screen and (max-width: 767px){
+		right: 0;
+		&.right{
+			left: 0;
+		}
+	}
+}

@@ -1,0 +1,146 @@
+.portfolio-selector{
+	position: absolute;
+	list-style: none;
+	padding-left: 0;
+	right: 15px;
+	top: 0;
+	li{
+		display: inline-block;
+		margin-left: 20px;
+		line-height: 1em;
+		a{
+			color: #444;
+			text-transform: uppercase;
+			font-size: 12px;
+			&:hover{
+				color: $color;
+			}
+			&.current{
+				color: $color !important;
+			}
+		}
+	}
+	@media screen and (max-width: 991px){
+		position: relative;
+		right: 0;
+		text-align: center;
+	}
+	@media screen and (max-width: 640px){
+		li{
+			display: block;
+			margin-left: 0;
+			line-height: 2em;
+		}
+	}
+}
+.bg-parallax{
+	.portfolio-selector{
+		li{
+			a{
+				color: #fff;
+				&:hover{
+					color: $color;
+				}
+			}
+		}
+	}
+}
+
+// Portfolio Slider
+.portfolio-slider{
+	position: relative;
+	padding: 20px 65px;
+	@media screen and (max-width: 767px){
+		padding: 20px 15px;
+	}
+	.portfolio-item{
+		float: none;
+		overflow: auto;
+		h5{
+			color: #fff;
+		}
+	}
+}
+
+// Portfolio Page
+.portfolio{
+	margin-left: -15px;
+	margin-right: -15px;
+	&.portfolio-col-2,
+	&.portfolio-col-3,
+	&.portfolio-col-4{
+		.portfolio-item{
+			padding-left: 15px;
+			padding-right: 15px;
+			margin-bottom: 30px;
+		}
+	}
+	&.portfolio-col-2{
+		.portfolio-item{
+			width: 50%;
+		}
+	}
+	&.portfolio-col-3{
+		.portfolio-item{
+			width: 33.333333%;
+		}
+	}
+	&.portfolio-col-4{
+		.portfolio-item{
+			width: 25%;
+		}
+	}
+	@media screen and (max-width: 1199px){
+		&.portfolio-col-3,
+		&.portfolio-col-4{
+			.portfolio-item{
+				width: 50%;
+			}
+		}
+	}
+
+	@media screen and (max-width: 767px){
+		&.portfolio-col-2,
+		&.portfolio-col-3,
+		&.portfolio-col-4{
+			.portfolio-item{
+				width: 100%;
+			}
+		}
+	}
+	&:before,
+	&:after{
+		content: '';
+		display: table;
+	}
+	&:after{
+		clear: both;
+	}
+}
+
+.portfolio-item{
+	position: relative;
+	text-align: center;
+	float: left;
+	overflow: hidden;
+	> * {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+    }
+	.portfolio-media{
+		position: relative;
+		display: inline-block;
+		margin-bottom: 25px;
+	}
+	h5{
+		letter-spacing: 1px;
+		color: #444;
+		margin-bottom: 0;
+		line-height: 1.3em;
+	}
+}
+
+.isotope-grid-wrapper{
+	padding-top: 30px;
+}

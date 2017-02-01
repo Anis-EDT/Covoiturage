@@ -1,0 +1,15 @@
+img {
+	margin: 0 auto;
+    display: block;
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+    border: 0;
+    @include transition;
+}
+
+iframe {
+    border: 0;
+    max-width: 100%;
+    width: 100%;
+}
