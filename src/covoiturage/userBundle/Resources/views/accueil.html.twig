@@ -106,6 +106,7 @@
                                 <li><a href="#"><i class="fa fa-user"></i> {{ app.user.username|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</a></li>
                                 <li><a href="#"><i class="fa fa-cab"></i> Mes annonces</a></li>
                                 <li><a href="#"><i class="fa fa-book"></i> Mes réservation</a></li>
+                                    <li><a href="{{ path('covoiturage_homepage') }}"><i class="fa fa-folder"></i> Mes Réclamations </a></li>
                                 <li><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-power-off"></i> Logout</a></li>
                             </ul>
                         </li>
