@@ -58,10 +58,15 @@
                         <ul class="nav side-menu">
                             <li><a href="{{ path('covoiturageadmin_back') }}"><i class="fa fa-home"></i> Accueil </a>
                             </li>
-                            <li><a href="#"><i class="fa fa-edit"></i> Réclamation</a>
+                            {% if is_granted('ROLE_SUPER_ADMIN') %}
+                            <li><a><i class="fa fa-user"></i> Admins</a>
                             </li>
+                            {% endif %}
                             <li><a><i class="fa fa-user"></i> Utilisteurs</a>
                             </li>
+                            <li><a href="#"><i class="fa fa-edit"></i> Réclamation</a>
+                            </li>
+
                             <li><a><i class="fa fa-bar-chart-o"></i> Statistiques <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="#">Chart 1</a></li>
@@ -100,14 +105,7 @@
                             </a>
                             <ul class="dropdown-menu dropdown-usermenu pull-right">
                                 <li><a href="javascript:;"> Profile</a></li>
-                                <li>
-                                    <a href="javascript:;">
-                                        <span class="badge bg-red pull-right">50%</span>
-                                        <span>Settings</span>
-                                    </a>
-                                </li>
-                                <li><a href="javascript:;">Help</a></li>
-                                <li><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                                <li><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out pull-right"></i> Logout</a></li>
                             </ul>
                         </li>
                     </ul>

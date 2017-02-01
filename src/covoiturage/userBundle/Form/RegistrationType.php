@@ -12,7 +12,7 @@ class RegistrationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom')->add('prenom')->add('sexe',ChoiceType::class,array(
+        $builder->add('nom',null,array('label' => '*Nom'))->add('prenom',null,array('label' => '*Prénom'))->add('sexe',ChoiceType::class,array(
 
 
 
@@ -24,7 +24,7 @@ class RegistrationType extends AbstractType
 
 
                 'choices'=>array('Accepte'=> true, 'Refuse' => false)
-            ))->add('photo_Membre', FileType::class)->add('premisConduite', FileType::class);
+            ));
     }
 
     public function getParent()
