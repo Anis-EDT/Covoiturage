@@ -12,7 +12,8 @@
 /var/sessions/*
 !var/sessions/.gitkeep
 !var/SymfonyRequirements.php
-/vendor/
+/vendor/*
+/vendor
 /web/bundles/
 .idea/*
 .idea
