@@ -103,7 +103,7 @@
                                 <img src="{{ asset('/' ~ app.user.photoMembre ~ '') }}"  class="img-circle" width="40" height="40" border="1"  /></a>
                                 <ul class="sub-menu" style="left: -140%">
 
-                                <li><a href="#"><i class="fa fa-user"></i> {{ app.user.username|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</a></li>
+                                <li><a href="{{ path('fos_user_profile_edit') }}"><i class="fa fa-user"></i> {{ app.user.username|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</a></li>
                                 <li><a href="#"><i class="fa fa-cab"></i> Mes annonces</a></li>
                                 <li><a href="#"><i class="fa fa-book"></i> Mes réservation</a></li>
                                     <li><a href="#"><i class="fa fa-folder"></i> Mes Réclamations </a></li>
