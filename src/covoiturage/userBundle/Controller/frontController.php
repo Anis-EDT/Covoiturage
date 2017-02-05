@@ -12,8 +12,16 @@ class frontController extends Controller
         return $this->render('covoiturageuserBundle::accueil.html.twig');
     }
     public  function accueilAction(){
+        $em = $this->getDoctrine()->getManager();
 
-        return $this->render('covoiturageuserBundle::accueil.html.twig');
+        $temoignages = $em->getRepository('covoiturageuserBundle:temoignage')->findAll();
+
+
+        return $this->render('@covoiturageuser/accueil.html.twig', array(
+            'temoignage' => $temoignages,
+        ));
+
+
     }
 
 public  function contactAction(Request $request){
@@ -40,5 +48,7 @@ public  function contactAction(Request $request){
         }
         return $this->render('covoiturageuserBundle::check.html.twig');
     }
+    public  function rechercheAction(Request $request){
 
+    }
 }
