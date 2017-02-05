@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Temoignages list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Message</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for temoignage in temoignages %}
+            <tr>
+                <td><a href="{{ path('temoignage_show', { 'id': temoignage.id }) }}">{{ temoignage.id }}</a></td>
+                <td>{{ temoignage.message }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('temoignage_show', { 'id': temoignage.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('temoignage_edit', { 'id': temoignage.id }) }}">edit</a>
+
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('temoignage_new') }}">Create a new temoignage</a>
+        </li>
+    </ul>
+{% endblock %}
