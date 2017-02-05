@@ -1,3 +1,27 @@
 covoituragemembre_homepage:
     path:     /
     defaults: { _controller: covoituragemembreBundle:Default:index }
+temoignage_index:
+    path:     /temoignage/
+    defaults: { _controller: "covoituragemembreBundle:temoignage:index" }
+    methods:  GET
+
+temoignage_show:
+    path:     /temoignage/{id}/show
+    defaults: { _controller: "covoituragemembreBundle:temoignage:show" }
+    methods:  GET
+
+temoignage_new:
+    path:     /temoignage/new
+    defaults: { _controller: "covoituragemembreBundle:temoignage:new" }
+    methods:  [GET, POST]
+
+temoignage_edit:
+    path:    /temoignage/{id}/edit
+    defaults: { _controller: "covoituragemembreBundle:temoignage:edit" }
+    methods:  [GET, POST]
+
+temoignage_delete:
+    path:     /temoignage/{id}/delete
+    defaults: { _controller: "covoituragemembreBundle:temoignage:delete" }
+    methods:  DELETE
