@@ -52,7 +52,71 @@
 
         <![endif]-->
     {% endblock %}
+
+
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBilfVJ4HcDcQcqcbkBeuQakGeCWZaOpgI&libraries=geometry,places"></script>
+    <script>
+        google.maps.event.addDomListener(window,'load', initialize);
+        google.maps.event.addDomListener(window,'load', initialize2);
+
+
+        function initialize (){
+            var autocomplete = new google.maps.places.Autocomplete(document.getElementById('depart'));
+            google.maps.event.addListener(autocomplete,'place_changed',function(){
+
+                var places =autocomplete.getPlace();
+
+                var l1= places.geometry.location.lat() ;
+
+                var la1= places.geometry.location.lng() ;
+
+
+                document.getElementById('l1').innerHTML=l1;
+                document.getElementById('la1').innerHTML=la1;
+
+
+            });
+
+        }
+        function initialize2 (){
+            var autocomplete = new google.maps.places.Autocomplete(document.getElementById('destination'));
+            google.maps.event.addListener(autocomplete,'place_changed',function(){
+
+                var places =autocomplete.getPlace();
+
+                var l2= places.geometry.location.lat() ;
+
+                var la2= places.geometry.location.lng() ;
+
+
+                document.getElementById('l2').innerHTML=l2;
+                document.getElementById('la2').innerHTML=la2;
+
+            });
+
+        }
+
+
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
     <title>Accueil</title>
+
+
+
+
+
 </head>
 <body>
 
@@ -73,9 +137,9 @@
             <!-- LOGO -->
             <div class="logo">
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                <a href="{{ path('covoiturage_homepage') }}" ><img src="{{asset('img/logo2.png')}}" style="padding-top: 14%"/></a>
+                    <a href="{{ path('covoiturage_homepage') }}" ><img src="{{asset('img/logo2.png')}}" style="padding-top: 14%"/></a>
                 {% else %}
-                <a href="{{ path('covoiturage_homepage') }}" ><img src="{{asset('img/logo2.png')}}" /></a>
+                    <a href="{{ path('covoiturage_homepage') }}" ><img src="{{asset('img/logo2.png')}}" /></a>
                 {% endif %}
             </div><!-- /#logo -->
             <!-- END / LOGO -->
@@ -101,18 +165,16 @@
                         <li class="menu-item-has-children" >
                             <a href="#" >
                                 <img src="{{ asset('/' ~ app.user.photoMembre ~ '') }}"  class="img-circle" width="40" height="40" border="1"  /></a>
-                                <ul class="sub-menu" style="left: -140%">
+                            <ul class="sub-menu" style="left: -140%">
 
-                                <li><a href="{{ path('fos_user_profile_edit') }}"><i class="fa fa-user"></i> {{ app.user.username|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</a></li>
+                                <li><a href="#"><i class="fa fa-user"></i> {{ app.user.username|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</a></li>
                                 <li><a href="#"><i class="fa fa-cab"></i> Mes annonces</a></li>
                                 <li><a href="#"><i class="fa fa-book"></i> Mes réservation</a></li>
-                                    <li><a href="#"><i class="fa fa-folder"></i> Mes Réclamations </a></li>
-                                    <li><a href="#"><i class="fa fa-hand-paper-o"></i> Mes Témoignages </a></li>
+                                <li><a href="#"><i class="fa fa-folder"></i> Mes Réclamations </a></li>
+                                <li><a href="#"><i class="fa fa-hand-paper-o"></i> Mes Témoignages </a></li>
                                 <li><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-power-off"></i> Logout</a></li>
                             </ul>
-                        </li >
-                        <!-- ok>
-
+                        </li>
                     {% else %}
 
                         <li>
@@ -306,25 +368,29 @@
     <section class="section bg-white pt-50 pb-50">
         <div class="container">
             <div class="row">
-    <form id="contact-form" method="post">
-        <div class="group clearfix">
-            <i class="fa fa-map-marker fa-2x" aria-hidden="true" style="color: gold" ></i>
-                <input type="text" name="Depart" placeholder="Départ" style="width: 22%"/>
+                <form id="contact-form" method="post">
+                    <div class="group clearfix">
+                        <i class="fa fa-map-marker fa-2x" aria-hidden="true" style="color: gold" ></i>
+                        <input type="text" name="Depart" placeholder="Départ" id="depart" style="width: 22%"/>
+                        <input type="hidden" name="l1"  id="l1" />
+                        <input type="hidden" name="la1"  id="la1" />
 
 
-            <i class="fa fa-map-marker fa-2x" aria-hidden="true" style="margin-left: 3%;color: gold" ></i>
-            <input type="text" name="Destination" placeholder="Destination" style="width: 22%"  />
-            <i class="fa fa-calendar fa-2x" aria-hidden="true" style="margin-left: 3%;color: gold"></i>
-            <input type="date" name="Date" placeholder="Date" style="width: 22%"  />
+                        <i class="fa fa-map-marker fa-2x" aria-hidden="true" style="margin-left: 3%;color: gold" ></i>
+                        <input type="text" name="Destination" placeholder="Destination" id ="destination" style="width: 22%"  />
+                        <input type="hidden" name="l2"  id="l2" />
+                        <input type="hidden" name="la2"  id="la2" />
+                        <i class="fa fa-calendar fa-2x" aria-hidden="true" style="margin-left: 3%;color: gold"></i>
+                        <input type="date" name="Date" placeholder="Date" style="width: 22%"  />
 
 
 
-        <button type="submit" class="btn btn-primary radius" style="margin-left: 5%"  >Chercher</button>
-        
-        </div><!-- /group -->
-        <div id="contact-content" style="padding-top: 20px"></div>
-    </form>
-</div></div></section>
+                        <button type="submit" class="btn btn-primary radius" style="margin-left: 5%"  >Chercher</button>
+
+                    </div><!-- /group -->
+                    <div id="contact-content" style="padding-top: 20px"></div>
+                </form>
+            </div></div></section>
 
 
 
@@ -379,14 +445,29 @@
                 <div class="col-sm-6 col-xs-12">
                     <h2 class="section-header">Testimonials</h2>
                     <div class="testimonial testimonial-slider" data-number-slide="1">
+
+                        {% for test in temoignage %}
+                            <div class="item">
+                                <div class="testimonial-status white">{{ test.message }}</div>
+                                <div class="testimonial-author clearfix">
+                                    <img src="{{ asset("{{  test.membre.PhotoMembre}}") }}" alt="" class="img-circle" />
+
+
+                                    <h5 class="text-uppercase text-right">{{ test.membre.username }}</h5>
+                                    <p class=" text-right">Ceo &amp; Founder - envato</p>
+                                </div><!-- /testimonial-author -->
+                            </div><!-- /item -->
+                        {% endfor %}
+
+
                         <div class="item">
                             <div class="testimonial-status white">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,</div>
                             <div class="testimonial-author clearfix">
                                 <img src="{{ asset('photo_membre/2.jpeg') }}" alt="" class="img-circle" />
-                                <h5 class="text-uppercase text-right">Mark Alexis</h5>
+                                <h5 class="text-uppercase text-right">Mkjkjkjs</h5>
                                 <p class=" text-right">Ceo &amp; Founder - envato</p>
                             </div><!-- /testimonial-author -->
-                        </div><!-- /item -->
+                        </div><!-- /item-->
 
                         <div class="item">
                             <div class="testimonial-status white">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,</div>
@@ -479,33 +560,33 @@
 
 
 
-<!-- FOOTER -->
-<footer id="footer" class="footer bg-dark">
+    <!-- FOOTER -->
+    <footer id="footer" class="footer bg-dark">
 
-    <div class="foot-credit">
-        <div class="container">
-            <ul>
-
-
-
-                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                <li><a href="{{ path('covoiturage_contact') }}">Contactez nous</a></li>
-                {% else %}
-                    <li>
-                        <a href="{{ path('fos_user_registration_register') }}">
-                            Inscription</a>
-                    </li>
-                    <li><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
-                    <li><a href="{{ path('covoiturage_contact') }}">Contactez nous</a></li>
-                {% endif %}
-            </ul>
-            <p>Share The Fare &copy; 2017 By EDT-ONE. All rights Reserved</p>
-        </div><!-- /container -->
-    </div><!-- /foot-credit -->
-</footer>
+        <div class="foot-credit">
+            <div class="container">
+                <ul>
 
 
-<!-- END / FOOTER -->
+
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <li><a href="{{ path('covoiturage_contact') }}">Contactez nous</a></li>
+                    {% else %}
+                        <li>
+                            <a href="{{ path('fos_user_registration_register') }}">
+                                Inscription</a>
+                        </li>
+                        <li><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
+                        <li><a href="{{ path('covoiturage_contact') }}">Contactez nous</a></li>
+                    {% endif %}
+                </ul>
+                <p>Share The Fare &copy; 2017 By EDT-ONE. All rights Reserved</p>
+            </div><!-- /container -->
+        </div><!-- /foot-credit -->
+    </footer>
+
+
+    <!-- END / FOOTER -->
 </div><!-- /page-wrap -->
 <!-- JQUERY -->
 <script type="text/javascript" src="{{asset('js/lib/jquery-1.11.3.min.js')}}"></script>
