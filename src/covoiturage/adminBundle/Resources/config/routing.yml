@@ -4,3 +4,52 @@ covoiturageadmin_homepage:
 covoiturageadmin_back:
     path:     /admin/back
     defaults: { _controller: covoiturageadminBundle:back:back }
+covoiturageadmin_util:
+    path:     /admin/utilisateurs
+    defaults: { _controller: covoiturageadminBundle:back:util }
+covoiturageadmin_util_sup:
+    path:     /admin/sup/{id}
+    defaults: { _controller: covoiturageadminBundle:back:sup }
+covoiturageadmin_adm:
+    path:     /admin/admins
+    defaults: { _controller: covoiturageadminBundle:back:adm }
+covoiturageadmin_adm_add:
+    path:     /admin/admin_add
+    defaults: { _controller: covoiturageadminBundle:back:admAdd }
+covoiturageadmin_util_sup_sup:
+    path:     /admin/sup_sup/{id}
+    defaults: { _controller: covoiturageadminBundle:back:sup1 }
+temoi_list:
+    path:     /admin/temoilist
+    defaults: { _controller: covoiturageadminBundle:back:Temlist }
+supprimertem:
+    path:     /admin/supptem/{id}
+    defaults: { _controller: covoiturageadminBundle:back:supprimertem }
+ann_list:
+    path:     /admin/annlist
+    defaults: { _controller: covoiturageadminBundle:back:annlist }
+supprimerannonce:
+    path:     /admin/suppannonceA/{id}
+    defaults: { _controller: covoiturageadminBundle:back:supprimerann }
+charts1:
+    path:     /admin/charts1
+    defaults: { _controller: covoiturageadminBundle:back:cht }
+charts2:
+    path:     /admin/charts2
+    defaults: { _controller: covoiturageadminBundle:back:cht2 }
+charts3:
+    path:     /admin/charts3
+    defaults: { _controller: covoiturageadminBundle:back:cht3 }
+covoiturageadmin_afficherReclamation :
+    path:     /admin/afficherReclamation
+    defaults: { _controller: covoiturageadminBundle:back:afficherR }
+covoiturageadmin_supprimerReclamation :
+    path:     /admin/supprimerR/{id}
+    defaults: { _controller: covoiturageadminBundle:back:supprimerR }
+covoiturageadmin_repondreReclamation:
+    path:     /admin/repondre
+    defaults: { _controller: covoiturageadminBundle:back:repondre }
+covoiturageadmin_exReclamation:
+    path:     /admin/ex
+    defaults: { _controller: covoiturageadminBundle:back:ex }
+

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Accueil | Admin </title>
+
+    <!-- Bootstrap -->
+    <link href="{{ asset('back/vendors/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="{{ asset('back/vendors/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="{{ asset('back/vendors/nprogress/nprogress.css')}}" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="{{ asset('back/vendors/iCheck/skins/flat/green.css')}}" rel="stylesheet">
+
+    <!-- bootstrap-progressbar -->
+    <link href="{{ asset('back/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css')}}" rel="stylesheet">
+    <!-- JQVMap -->
+    <link href="{{ asset('back/vendors/jqvmap/dist/jqvmap.min.css')}}" rel="stylesheet"/>
+    <!-- bootstrap-daterangepicker -->
+    <link href="{{ asset('back/vendors/bootstrap-daterangepicker/daterangepicker.css')}}" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="{{ asset('back/build/css/custom.min.css') }}" rel="stylesheet">
+</head>
+
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+        <div class="col-md-3 left_col">
+            <div class="left_col scroll-view">
+
+                <div class="clearfix"></div>
+
+                <!-- menu profile quick info -->
+                <div class="profile clearfix">
+                    <div class="profile_pic">
+                        <img src="{{ asset('/' ~ app.user.photoMembre ~ '') }}" alt="..." class="img-circle profile_img">
+                    </div>
+                    <div class="profile_info">
+                        <span>Bienvenue,</span>
+                        <h2>{{ app.user.username|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</h2>
+                    </div>
+                </div>
+                <!-- /menu profile quick info -->
+
+                <br />
+
+                <!-- sidebar menu -->
+                <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                    <div class="menu_section">
+
+                        <ul class="nav side-menu">
+                            <li><a href="{{ path('covoiturageadmin_back') }}"><i class="fa fa-home"></i> Accueil </a>
+                            </li>
+                            {% if is_granted('ROLE_SUPER_ADMIN') %}
+                                <li><a><i class="fa fa-user"></i> Admins<span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="{{ path('covoiturageadmin_adm_add') }}">Ajouter</a></li>
+                                        <li><a href="{{ path('covoiturageadmin_adm') }}">Lister</a></li>
+                                    </ul>
+                                </li>
+                            {% endif %}
+                            <li><a href="{{ path('covoiturageadmin_util') }}"><i class="fa fa-user"></i> Utilisteurs</a>
+                            </li>
+                            <li><a href="{{ path('covoiturageadmin_afficherReclamation') }}"><i class="fa fa-edit"></i> Réclamation</a>
+                            </li>
+
+                            <li><a><i class="fa fa-bar-chart-o"></i> Statistiques <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a href="{{ path('charts1') }}">Chart 1</a></li>
+                                    <li><a href="{{ path('charts2') }}">Chart 2</a></li>
+                                    <li><a href="{{ path('charts3') }}">chart 3</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="{{ path('ann_list') }}"><i class="fa fa-clone"></i>Annonces</a>
+                            </li>
+                            </li>
+                            <li><a href="{{ path('temoi_list') }}"><i class="fa fa-comment"></i>Témoignages</a>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                </div>
+                <!-- /sidebar menu -->
+
+            </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+            <div class="nav_menu">
+                <nav>
+                    <div class="nav toggle">
+                        <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                    </div>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="">
+                            <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <img src="{{ asset('/' ~ app.user.photoMembre ~ '') }}" alt="">{{ app.user.username|trans({'%username%': app.user.username}, 'FOSUserBundle') }}
+                                <span class=" fa fa-angle-down"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                <li><a href="{{ path('fos_user_profile_edit') }}"> Profile</a></li>
+                                <li><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out pull-right"></i> Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+            <!-- top tiles -->
+            <h3>Liste des admins</h3>
+            <table class="table table-striped"  border="1" style="border-color: lightgray">
+                <thead>
+                <tr>
+
+                    <th>Id admin</th>
+                    <th>Login</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                {% for utils in utils %}
+
+                    <tr>
+                            {% if utils.roles == ok%}
+
+                        <td>{{ utils.id }}</td>
+                        <td>{{ utils.username }}</td>
+                        <td>{{ utils.email}}</td>
+                        <td>
+                            <a href="{{ path('covoiturageadmin_util_sup_sup',{'id':utils.id}) }}">Supprimer</a>
+                        </td>
+                    </tr>
+                {% endif %}
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+            <div class="pull-right">
+                SHARE THE FARE - EDT-ONE
+            </div>
+            <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+    </div>
+</div>
+
+<!-- jQuery -->
+<script src="{{ asset('back/vendors/jquery/dist/jquery.min.js')}}"></script>
+<!-- Bootstrap -->
+<script src="{{ asset('back/vendors/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+<!-- FastClick -->
+<script src="{{ asset('back/vendors/fastclick/lib/fastclick.js')}}"></script>
+<!-- NProgress -->
+<script src="{{ asset('back/vendors/nprogress/nprogress.js')}}"></script>
+<!-- Chart.js -->
+<script src="{{ asset('back/vendors/Chart.js/dist/Chart.min.js')}}"></script>
+<!-- gauge.js -->
+<script src="{{ asset('back/vendors/gauge.js/dist/gauge.min.js')}}"></script>
+<!-- bootstrap-progressbar -->
+<script src="{{ asset('back/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js')}}"></script>
+<!-- iCheck -->
+<script src="{{ asset('back/vendors/iCheck/icheck.min.js')}}"></script>
+<!-- Skycons -->
+<script src="{{ asset('back/vendors/skycons/skycons.js')}}"></script>
+<!-- Flot -->
+<script src="{{ asset('back/vendors/Flot/jquery.flot.js')}}"></script>
+<script src="{{ asset('back/vendors/Flot/jquery.flot.pie.js')}}"></script>
+<script src="{{ asset('back/vendors/Flot/jquery.flot.time.js')}}"></script>
+<script src="{{ asset('back/vendors/Flot/jquery.flot.stack.js')}}"></script>
+<script src="{{ asset('back/vendors/Flot/jquery.flot.resize.js')}}"></script>
+<!-- Flot plugins -->
+<script src="{{ asset('back/vendors/flot.orderbars/js/jquery.flot.orderBars.js')}}"></script>
+<script src="{{ asset('back/vendors/flot-spline/js/jquery.flot.spline.min.js')}}"></script>
+<script src="{{ asset('back/vendors/flot.curvedlines/curvedLines.js')}}"></script>
+<!-- DateJS -->
+<script src="{{ asset('back/vendors/DateJS/build/date.js')}}"></script>
+<!-- JQVMap -->
+<script src="{{ asset('back/vendors/jqvmap/dist/jquery.vmap.js')}}"></script>
+<script src="{{ asset('back/vendors/jqvmap/dist/maps/jquery.vmap.world.js')}}"></script>
+<script src="{{ asset('back/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js')}}"></script>
+<!-- bootstrap-daterangepicker -->
+<script src="{{asset('back/vendors/moment/min/moment.min.js')}}"></script>
+<script src="{{asset('back/vendors/bootstrap-daterangepicker/daterangepicker.js')}}"></script>
+
+<!-- Custom Theme Scripts -->
+<script src="{{asset('back/build/js/custom.min.js')}}"></script>
+
+</body>
+</html>

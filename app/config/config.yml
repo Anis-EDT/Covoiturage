@@ -69,7 +69,6 @@ doctrine:
 # Swiftmailer Configuration
 swiftmailer:
     transport: "%mailer_transport%"
-    encryption: "%mailer_encryption%"
     host:      "%mailer_host%"
     username:  "%mailer_user%"
     password:  "%mailer_password%"
@@ -81,3 +80,50 @@ fos_user:
     registration:
             form:
                 type: covoiturage\userBundle\Form\RegistrationType
+nomaya_social:
+    buttons:
+        facebook:
+            url:            null
+            locale:         "fr_FR"
+            send:           false
+            width:          300
+            showFaces:      false
+            layout:         "button_count"
+        twitter:
+            url:            null
+            locale:         "fr"
+            message:        "Je veux partager ça avec vous"
+            text:           "Tweet"
+            via:            "L'Equipe cartedevisitevirtuelle.fr"
+            tag:            "ttot"
+        googleplus:
+            url:            null
+            locale :        "fr"
+            size :          "medium"
+            annotation :    "bubble"
+            width :         300
+        linkedin:
+            url:            null
+            locale:         "fr_FR"
+            counter:        "right"
+        pinterest:
+            url:            null
+    links:
+        facebook:           "http://www.facebook.com/yann.chauvel"
+        googleplus:         "https://plus.google.com/105931415830389032796"
+    theme:                  'default' # optional
+fos_comment:
+    db_driver: orm
+    class:
+        model:
+            comment: covoiturage\userBundle\Entity\Comment
+            thread: covoiturage\userBundle\Entity\Thread
+assetic:
+    bundles: [ "FOSCommentBundle" ]
+
+endroid_open_weather_map:
+    api_key: c74046e0e397baf2b7f11c50e41c8401
+    api_url:
+    units: ... // optional
+
+

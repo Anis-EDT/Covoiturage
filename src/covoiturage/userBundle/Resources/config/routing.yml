@@ -10,3 +10,21 @@ covoiturage_contact:
 covoiturage_check:
     path:     /check
     defaults: { _controller: covoiturageuserBundle:front:check }
+covoiturage_ajt_annonce:
+    path:     /membre/ajout_annonce
+    defaults: { _controller: covoiturageuserBundle:front:ajout }
+covoiturage_dernier_annonce:
+    path:     /dernier_annonce
+    defaults: { _controller: covoiturageuserBundle:front:dernier }
+ajouterReclamation:
+        path:     /membre/ajouterReclamation
+        defaults: { _controller: covoiturageuserBundle:reclamations:ajouter }
+afficherReclamation:
+        path:     /membre/afficherReclamation
+        defaults: { _controller: covoiturageuserBundle:reclamations:afficher }
+modifierReclamation:
+    path:     /membre/modifierReclamation/{id}
+    defaults: { _controller: covoiturageuserBundle:reclamations:modifier }
+supprimerReclamation:
+    path:     /membre/supprimerReclamation/{id}
+    defaults: { _controller: covoiturageuserBundle:reclamations:supprimer }

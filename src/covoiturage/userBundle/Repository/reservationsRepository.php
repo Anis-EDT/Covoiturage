@@ -10,4 +10,16 @@ namespace covoiturage\userBundle\Repository;
  */
 class reservationsRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findreservationById($passager2){
+
+        $query=$this->getEntityManager()->createQuery("SELECT r from covoiturageuserBundle:reservations r  WHERE 
+
+              r.passager2=:passager2 OR   r.passager3=:passager3  OR r.passager1=:passager1 OR r.passager4=:passager4 ")
+            ->setParameter('passager2',$passager2)
+            ->setParameter('passager3',$passager2)
+            ->setParameter('passager1',$passager2)
+            ->setParameter('passager4',$passager2);
+
+        return $query->getResult();
+    }
 }

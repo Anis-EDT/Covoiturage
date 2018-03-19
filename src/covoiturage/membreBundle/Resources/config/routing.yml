@@ -2,26 +2,83 @@ covoituragemembre_homepage:
     path:     /
     defaults: { _controller: covoituragemembreBundle:Default:index }
 temoignage_index:
-    path:     /temoignage/
+    path:     /membre/temoignage/
     defaults: { _controller: "covoituragemembreBundle:temoignage:index" }
     methods:  GET
 
 temoignage_show:
-    path:     /temoignage/{id}/show
+    path:     /membre/temoignage/{id}/show
     defaults: { _controller: "covoituragemembreBundle:temoignage:show" }
     methods:  GET
 
 temoignage_new:
-    path:     /temoignage/new
+    path:     /membre/temoignage/new
     defaults: { _controller: "covoituragemembreBundle:temoignage:new" }
     methods:  [GET, POST]
 
 temoignage_edit:
-    path:    /temoignage/{id}/edit
+    path:    /membre/temoignage/{id}/edit
     defaults: { _controller: "covoituragemembreBundle:temoignage:edit" }
     methods:  [GET, POST]
 
 temoignage_delete:
-    path:     /temoignage/{id}/delete
+    path:     /membre/temoignage/{id}/delete
     defaults: { _controller: "covoituragemembreBundle:temoignage:delete" }
     methods:  DELETE
+annonce_annonce:
+    path:     /membre/annonce
+    defaults: { _controller: covoituragemembreBundle:annonce:annonce }
+voiture_index:
+    path:     /membre/voiture/
+    defaults: { _controller: "covoituragemembreBundle:voiture:index" }
+    methods:  GET
+
+voiture_show:
+    path:     /membre/voiture/{id}/show
+    defaults: { _controller: "covoituragemembreBundle:voiture:show" }
+    methods:  GET
+
+voiture_new:
+    path:     /membre/voiture/new
+    defaults: { _controller: "covoituragemembreBundle:voiture:new" }
+    methods:  [GET, POST]
+
+voiture_edit:
+    path:    /membre/voiture/{id}/edit
+    defaults: { _controller: "covoituragemembreBundle:voiture:edit" }
+    methods:  [GET, POST]
+
+voiture_delete:
+    path:     /membre/voiture/{id}/delete
+    defaults: { _controller: "covoituragemembreBundle:voiture:delete" }
+    methods:  DELETE
+aff_annonce:
+    path:     /membre/affannoce/{id}
+    defaults: { _controller: covoituragemembreBundle:annonce:affAnnonce }
+modif_annonce:
+    path:     /membre/modifannonce/{id}
+    defaults: { _controller: covoituragemembreBundle:annonce:modifAnn }
+non_modif_annonce:
+    path:     /membre/non_modif
+    defaults: { _controller: covoituragemembreBundle:annonce:modifNonAnn }
+supp_annonce:
+    path:     /membre/supprimer/{id}
+    defaults: { _controller: covoituragemembreBundle:annonce:supAnn }
+non_supp_annonce:
+    path:     /membre/non_supp
+    defaults: { _controller: covoituragemembreBundle:annonce:suppNonAnn }
+recherche_annonce:
+    path:     /recherche
+    defaults: { _controller: covoituragemembreBundle:annonce:rechercheAnn }
+reservation_annonce:
+    path:     /membre/reservation/{id}
+    defaults: { _controller: covoituragemembreBundle:annonce:reserverAnn }
+pai_annonce:
+    path:     /membre/pai
+    defaults: { _controller: covoituragemembreBundle:annonce:pai }
+mes_reservations:
+    path:     /membre/mesreservations
+    defaults: { _controller: covoituragemembreBundle:reservation:mesres }
+covoiturage_remove:
+     path:    /rmres
+     defaults: { _controller: covoituragemembreBundle:reservation:remove }

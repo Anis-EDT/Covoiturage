@@ -10,4 +10,39 @@ namespace covoiturage\userBundle\Repository;
  */
 class annonceRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function rechercheAnnonce($depart,$destination,$date)
+    {
+        $date = "%".$date."%";
+        $query=$this->getEntityManager()->createQuery(
+            "SELECT a from covoiturageuserBundle:annonce a,
+              covoiturageuserBundle:trajet t,
+               covoiturageuserBundle:ville v,
+               covoiturageuserBundle:ville v1
+               WHERE a.date_depart LIKE :date AND a.trajet=t.id AND t.ville_depart=v.id AND v.nom=:depart
+               AND t.ville_arrive=v1.id AND v1.nom=:destination")
+            ->setParameters(array('depart'=>$depart,'destination'=>$destination,'date'=>$date));
+
+
+        return $query->getResult();
+
+    }
+    public function DernierAnnonce($date,$heure,$date_demain,$heure1,$location,$dateN)
+    {
+        $ok="";
+
+        $ok = "%".$dateN->format('Y-m-d')."%";
+
+        $location = "%".$location."%";
+        $query=$this->getEntityManager()->createQuery(
+            "SELECT a from covoiturageuserBundle:annonce a,  covoiturageuserBundle:trajet t
+              ,covoiturageuserBundle:ville v
+               WHERE  a.date_depart LIKE :dateN AND a.heure_depart<:heure 
+               And a.heure_depart>=:heure1 
+               AND a.trajet=t.id AND t.ville_depart=v.id AND v.nom LIKE :location")
+            ->setParameters(array('dateN'=>$ok,'heure'=>$heure,'heure1'
+            =>$heure1,'location'=>'%'.$location.'%'));
+
+        return $query->getResult();
+
+    }
 }

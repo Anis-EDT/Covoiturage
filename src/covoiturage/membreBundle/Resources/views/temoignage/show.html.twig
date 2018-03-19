@@ -1,33 +1,262 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<!--[if IE 7 ]> <html class="ie ie7"> <![endif]-->
+<!--[if IE 8 ]> <html class="ie ie8"> <![endif]-->
+<!--[if IE 9 ]> <html class="ie ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="" lang="en"> <!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    {% block stylesheets %}
+        <!-- GOOGLE FONT -->
+        <script src="{{asset('login/js/index.js') }}"></script>
+        <link type="text/css" href="{{asset('login/css/style.css') }}" rel="stylesheet">
+        <link href="{{asset('https://fonts.googleapis.com/css?family=Montserrat:400,700') }}" rel='stylesheet' type='text/css'>
+        <link href="{{asset('https://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic') }}" rel='stylesheet' type='text/css'>
+        <link href="{{asset('https://fonts.googleapis.com/css?family=Raleway:100,300,400,500,600,700') }}" rel='stylesheet' type='text/css'>
+        <!-- CSS LIBRARY -->
+        <!-- Bootstrap -->
+        <link type="text/css" href="{{asset('css/lib/bootstrap.min.css') }}" rel="stylesheet">
+        <link type="text/css" href="{{asset('css/lib/jquery.bootstrap-touchspin.min.css') }}" rel="stylesheet">
 
-{% block body %}
+        <!-- Font Icon -->
+        <link type="text/css" href="{{asset('css/lib/font-awesome.min.css') }}" rel="stylesheet">
+        <link type="text/css" href="{{asset('css/lib/cortana.css') }}" rel="stylesheet">
 
-    <h1>Temoignage</h1>
+        <!-- Revolution Slider -->
+        <link type="text/css" href="{{asset('rs-plugin/css/settings.css') }}" rel="stylesheet">
+        <!-- Owl Carousel -->
+        <link type="text/css" href="{{asset('css/lib/owl.carousel.css') }}" rel="stylesheet">
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ temoignage.id }}</td>
-            </tr>
-            <tr>
-                <th>Message</th>
-                <td>{{ temoignage.message }}</td>
-            </tr>
-        </tbody>
-    </table>
+        <!-- Select into div -->
+        <link type="text/css" href="{{asset('css/lib/select2.min.css') }}" rel="stylesheet">
 
-    <ul>
-        <li>
-            <a href="{{ path('temoignage_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('temoignage_edit', { 'id': temoignage.id }) }}">Edit</a>
-        </li>
-        <li>
+        <!-- Magnific Popup -->
+        <link type="text/css" href="{{asset('css/lib/magnific-popup.css') }}" rel="stylesheet">
+
+        <!-- Custom CSS -->
+        <link type="text/css" href="{{asset('css/style.css') }}" rel="stylesheet">
+        <link type="text/css" href="{{asset('font-awesome-4.7.0/css/font-awesome.min.css') }}" rel="stylesheet">
+
+
+    {% endblock %}
+    {% block javascripts %}
+
+
+        <script src="{{asset('https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js') }}"></script>
+        <script src="{{asset('https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js') }}"></script>
+
+        <script src="{{asset('js/lib/bootstrap.min.js') }}"></script>
+
+
+
+
+
+
+
+
+
+        <![endif]-->
+    {% endblock %}
+    <title>Mon témoignage</title>
+</head>
+<body>
+
+<!-- PRELOAD -->
+<div id="preload" class="preload">
+    <div class="flat"></div>
+    <div class="square"></div>
+    <div class="square-2"></div>
+    <div class="square-3"></div>
+    <div class="square-4"></div>
+</div>
+
+<!-- HEADER 1 -->
+<header id="header" class="header head1">
+
+    <div class="main-header main-header-1 bd-b-alpha">
+        <div class="container">
+            <!-- LOGO -->
+            <div class="logo">
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    <a href="{{ path('covoiturage_homepage') }}" ><img src="{{asset('img/logo2.png')}}" style="padding-top: 14%"/></a>
+                {% else %}
+                    <a href="{{ path('covoiturage_homepage') }}" ><img src="{{asset('img/logo2.png')}}" /></a>
+                {% endif %}
+            </div><!-- /#logo -->
+            <!-- END / LOGO -->
+
+            <!-- MOBILE MENU -->
+            <div class="mobile-nav-menu" data-menu-number="3">
+                <span class="icon">&nbsp;</span>
+            </div><!-- /mobile-nav-menu -->
+            <!-- /END MOBILE MENU -->
+
+
+
+            <!-- NAVIGATION -->
+            <nav class="navigation nav3" data-menu-type="1199">
+                <ul class="nav text-uppercase">
+
+
+
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+                        <li><a href="{{ path('covoiturage_contact') }}">Contactez nous</a></li>
+                        <li class="no-bg" ><a href="{{ path('covoiturage_ajt_annonce') }}" class="p-job"><i class="fa fa-plus-square" style="margin-top: -50%"></i>Ajouter Annonce</a></li>
+
+                        <li class="menu-item-has-children" >
+                            <a href="#" >
+                                <img src="{{ asset('/' ~ app.user.photoMembre ~ '') }}"  class="img-circle" width="40" height="40" border="1"  /></a>
+                            <ul class="sub-menu" style="left: -140%">
+
+                                <li><a href="{{ path('fos_user_profile_edit') }}"><i class="fa fa-user"></i> {{ app.user.username|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</a></li>
+                                {% if app.user.premisConduite != null%}
+                                    <li><a href="{{ path('voiture_index') }}"><i class="fa fa-cab"></i> Mes voitures</a></li>
+                                {% endif %}
+                                <li><a href="{{ path('annonce_annonce') }}"><i class="fa fa-cab"></i> Mes annonces</a></li>
+                                <li><a href="{{ path('mes_reservations') }}"><i class="fa fa-book"></i> Mes réservation</a></li>
+                                <li><a href="{{ path('afficherReclamation') }}"><i class="fa fa-folder"></i> Mes Réclamations </a></li>
+                                <li><a href="{{ path('temoignage_index') }}"><i class="fa fa-hand-paper-o"></i> Mes Témoignages </a></li>
+                                <li><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-power-off"></i> Logout</a></li>
+                            </ul>
+                        </li>
+                    {% else %}
+
+                        <li>
+                            <a href="{{ path('fos_user_registration_register') }}">
+                                Inscription</a>
+                        </li>
+                        <li><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
+                        <li><a href="{{ path('covoiturage_contact') }}">Contactez nous</a></li>
+                    {% endif %}
+
+                </ul><!-- /nav -->
+            </nav>
+            <!-- END / NAVIGATION -->
+        </div><!-- /container -->
+    </div><!-- /main-header -->
+</header><!-- /header -->
+<!-- END / HEADER 1 -->
+
+<div id="page-wrap">
+    <!-- SUB HEADER -->
+    <section id="sub-header" class="section bg-parallax pb-0" data-background="{{ asset('img/slider/slide30.jpg') }}" >
+        <div class="bg-overlay-black bg-overlay-5"></div>
+        <div class="container">
+            <div class="sub-wrapper">
+                <h1>Mes témoignages</h1>
+                <h2 class="h4">EDT-ONE s'occupe de tout.</h2>
+
+            </div><!-- /sub-wrapper -->
+        </div><!-- /container -->
+    </section>
+    <!-- END / SUB HEADER -->
+
+
+
+    <h3 align="center">Témoignage</h3>
+
+
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+
+            <h5>Message: </h5><br>
+            {{ temoignage.message }}
+
+
+
+
+
+<br><br>
+
+
+
+                <input type="submit" value="Supprimer" style="color: white;background-color: gold"><br>
+
             {{ form_end(delete_form) }}
-        </li>
-    </ul>
-{% endblock %}
+    <div style="margin-top: -2cm;">
+    <form>
+
+    <a href="{{ path('temoignage_edit', { 'id': temoignage.id }) }}" ><h5 style="color: white;background-color: gold" align="center"><br>Modifier<br>&nbsp;</h5></a><br>
+        <a href="{{ path('temoignage_index') }}">Retourner à ma liste de témoignages</a>
+</div>
+    </form>
+
+
+
+
+    <!-- FOOTER -->
+    <footer id="footer" class="footer bg-dark">
+
+        <div class="foot-credit">
+            <div class="container">
+                <ul>
+
+
+
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <li><a href="{{ path('covoiturage_contact') }}">Contactez nous</a></li>
+                    {% else %}
+                        <li>
+                            <a href="{{ path('fos_user_registration_register') }}">
+                                Inscription</a>
+                        </li>
+                        <li><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
+                        <li><a href="{{ path('covoiturage_contact') }}">Contactez nous</a></li>
+                    {% endif %}
+                </ul>
+                <p>Share The Fare &copy; 2017 By EDT-ONE. All rights Reserved</p>
+            </div><!-- /container -->
+        </div><!-- /foot-credit -->
+    </footer>
+
+    <!-- END / FOOTER -->
+</div><!-- /page-wrap -->
+<!-- JQUERY -->
+<script type="text/javascript" src="{{asset('js/lib/jquery-1.11.3.min.js')}}"></script>
+
+
+<!-- Bootstrap -->
+<script type="text/javascript" src="{{asset('js/lib/bootstrap.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/lib/jquery.bootstrap-touchspin.min.js')}}"></script>
+
+<!-- Revolution Slider -->
+<script type="text/javascript" src="{{asset('rs-plugin/js/jquery.themepunch.tools.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('rs-plugin/js/jquery.themepunch.revolution.min.js')}}"></script>
+<!-- Owl Carousel -->
+<script type="text/javascript" src="{{asset('js/lib/owl.carousel.min.js')}}"></script>
+<!-- Overflow Text -->
+<script type="text/javascript" src="{{asset('js/lib/overflow-text.js')}}"></script>
+
+<!-- Easing -->
+<script type="text/javascript" src="{{asset('js/lib/jquery.easing.min.js')}}"></script>
+
+<!-- Select to div -->
+<script type="text/javascript" src="{{asset('js/lib/select2.min.js')}}"></script>
+
+<!-- Parallax -->
+<script type="text/javascript" src="{{asset('js/lib/jquery.parallax-1.1.3.js')}}"></script>
+
+<!-- Waypoint -->
+<script type="text/javascript" src="{{asset('js/lib/waypoints.min.js')}}"></script>
+
+<!-- Count To -->
+<script type="text/javascript" src="{{asset('js/lib/jquery.countTo.js')}}"></script>
+
+<!-- Magnific Popup -->
+<script type="text/javascript" src="{{asset('js/lib/jquery.magnific-popup.min.js')}}"></script>
+
+<!-- Image Loaded -->
+<script type="text/javascript" src="{{asset('js/lib/imagesloaded.pkgd.min.js')}}"></script>
+
+<!-- Isotope -->
+<script type="text/javascript" src="{{asset('js/lib/isotope.pkgd.min.js')}}"></script>
+
+
+<!-- Custom jQuery -->
+<script type="text/javascript" src="{{asset('js/scripts.js')}}"></script>
+
+</body>
+</html>

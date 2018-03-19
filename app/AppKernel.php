@@ -8,6 +8,8 @@ class AppKernel extends Kernel
     public function registerBundles()
     {
         $bundles = [
+
+
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new Symfony\Bundle\SecurityBundle\SecurityBundle(),
             new Symfony\Bundle\TwigBundle\TwigBundle(),
@@ -20,6 +22,16 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new covoiturage\adminBundle\covoiturageadminBundle(),
             new covoiturage\membreBundle\covoituragemembreBundle(),
+            new blackknight467\StarRatingBundle\StarRatingBundle(),
+            new Nomaya\SocialBundle\NomayaSocialBundle(),
+            new Symfony\Bundle\AsseticBundle\AsseticBundle(),
+            new FOS\RestBundle\FOSRestBundle(),
+            new FOS\CommentBundle\FOSCommentBundle(),
+            new JMS\SerializerBundle\JMSSerializerBundle($this),
+            new Ob\HighchartsBundle\ObHighchartsBundle(),
+            new Endroid\Bundle\OpenWeatherMapBundle\EndroidOpenWeatherMapBundle(),
+            new Captcha\Bundle\CaptchaBundle\CaptchaBundle(),
+            new Liuggio\ExcelBundle\LiuggioExcelBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

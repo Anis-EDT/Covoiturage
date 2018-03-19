@@ -20,7 +20,7 @@ class temoignageController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $temoignages = $em->getRepository('covoiturageuserBundle:temoignage')->findAll();
+        $temoignages = $em->getRepository('covoiturageuserBundle:temoignage')->findBy(array('Membre'=>$this->getUser()));
 
         return $this->render('covoituragemembreBundle:temoignage:index.html.twig', array(
             'temoignages' => $temoignages,
@@ -44,6 +44,8 @@ class temoignageController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $temoignage->setMembre($user2);
+            $date3 = new \DateTime('now');
+            $temoignage->setDateTem($date3);
             $em->persist($temoignage);
             $em->flush($temoignage);
 

@@ -28,9 +28,29 @@ class reservations
      */
     private $dateReservation;
     /**
-     * @ORM\ManyToOne(targetEntity="Annonce")
+     * @ORM\ManyToOne(targetEntity="annonce")
      */
     private $Annonce;
+    /**
+     * @ORM\Column(name="nbplace", type="integer")
+     */
+    private $nbplace;
+
+    /**
+     * @return mixed
+     */
+    public function getNbplace()
+    {
+        return $this->nbplace;
+    }
+
+    /**
+     * @param mixed $nbplace
+     */
+    public function setNbplace($nbplace)
+    {
+        $this->nbplace = $nbplace;
+    }
     /**
      * @ORM\ManyToOne(targetEntity="Membre")
      */

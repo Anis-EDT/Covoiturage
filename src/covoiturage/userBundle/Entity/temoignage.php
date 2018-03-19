@@ -37,6 +37,28 @@ class temoignage
      * @ORM\ManyToOne(targetEntity="Membre")
      */
     private $Membre;
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_tem", type="date")
+     */
+    private $date_tem;
+
+    /**
+     * @return \DateTime
+     */
+    public function getDateTem()
+    {
+        return $this->date_tem;
+    }
+
+    /**
+     * @param \DateTime $date_tem
+     */
+    public function setDateTem($date_tem)
+    {
+        $this->date_tem = $date_tem;
+    }
 
     /**
      * @return int

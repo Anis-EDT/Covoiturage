@@ -36,7 +36,9 @@ class trajet
      */
     private $ville_arrive;
     /**
-     * @ORM\ManyToOne(targetEntity="ville")
+     * @var string
+     *
+     * @ORM\Column(name="escale", type="string", length=255)
      */
     private $escale;
 

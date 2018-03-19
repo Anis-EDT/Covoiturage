@@ -29,9 +29,9 @@ class voiture
     private $marque;
 
     /**
-     * @var int
+     * @var string
      *
-     * @ORM\Column(name="comfort", type="integer")
+     * @ORM\Column(name="comfort", type="string", length=255)
      */
     private $comfort;
 

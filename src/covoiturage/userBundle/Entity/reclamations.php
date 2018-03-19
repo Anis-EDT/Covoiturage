@@ -3,6 +3,7 @@
 namespace covoiturage\userBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Captcha\Bundle\CaptchaBundle\Validator\Constraints as CaptchaAssert;
 
 /**
  * reclamations
@@ -20,6 +21,50 @@ class reclamations
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+    /**
+     * @CaptchaAssert\ValidCaptcha(
+     *      message = "CAPTCHA validation failed, try again."
+     * )
+     */
+    protected $captchaCode;
+
+    /**
+     * @return mixed
+     */
+    public function getCaptchaCode()
+    {
+        return $this->captchaCode;
+    }
+
+    /**
+     * @param mixed $captchaCode
+     */
+    public function setCaptchaCode($captchaCode)
+    {
+        $this->captchaCode = $captchaCode;
+    }
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="reponse", type="string", length=255)
+     */
+    private $reponse;
+
+    /**
+     * @return string
+     */
+    public function getReponse()
+    {
+        return $this->reponse;
+    }
+
+    /**
+     * @param string $reponse
+     */
+    public function setReponse($reponse)
+    {
+        $this->reponse = $reponse;
+    }
 
     /**
      * @var string
